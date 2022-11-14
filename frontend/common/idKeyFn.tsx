@@ -1,0 +1,3 @@
+export function idKeyFn(item: { id: number | string }) {
+  return item.id
+}
