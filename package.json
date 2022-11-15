@@ -8,7 +8,8 @@
     "prettier": "prettier --check src"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "^0.0.271"
+    "@ansible/ansible-ui-framework": "^0.0.271",
+    "@types/react": "^18.0.25"
   },
   "devDependencies": {
     "@babel/core": "7.20.2",

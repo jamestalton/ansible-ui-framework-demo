@@ -8,12 +8,12 @@ import {
 import { AlertActionLink, ButtonVariant } from '@patternfly/react-core'
 import { BanIcon, EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
-import { IJob } from './useJobs'
+import { Job, JobStatus } from '../Job'
 
-export function useJobActions() {
+export function useJobActions(setJobStatus: (id: number, status: JobStatus) => void) {
   const pageAlertToaster = usePageAlertToaster()
 
-  return useMemo<ITypedAction<IJob>[]>(
+  return useMemo<ITypedAction<Job>[]>(
     () => [
       {
         type: TypedActionType.single,
@@ -31,14 +31,25 @@ export function useJobActions() {
               </AlertActionLink>
             ),
           }
+          setJobStatus(job.id, 'Running')
           pageAlertToaster.addAlert(alertProps)
           setTimeout(() => {
-            pageAlertToaster.replaceAlert(alertProps, {
-              variant: 'success',
-              title: `Job "${job.name}" completed`,
-              timeout: 10000,
-              actionLinks: alertProps.actionLinks,
-            })
+            if (Math.random() < 0.5) {
+              pageAlertToaster.replaceAlert(alertProps, {
+                variant: 'success',
+                title: `Job "${job.name}" successful`,
+                timeout: 10000,
+                actionLinks: alertProps.actionLinks,
+              })
+              setJobStatus(job.id, 'Successful')
+            } else {
+              pageAlertToaster.replaceAlert(alertProps, {
+                variant: 'danger',
+                title: `Job "${job.name}" failed`,
+                actionLinks: alertProps.actionLinks,
+              })
+              setJobStatus(job.id, 'Failed')
+            }
           }, 5000)
         },
       },

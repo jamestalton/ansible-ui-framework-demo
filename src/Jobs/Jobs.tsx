@@ -3,16 +3,17 @@ import { idKeyFn } from '../common/idKeyFn'
 import { useJobActions } from './hooks/useJobActions'
 import { useJobColumns } from './hooks/useJobColumns'
 import { useJobFilters } from './hooks/useJobFilters'
-import { IJob, useJobs } from './hooks/useJobs'
+import { useJobs } from './hooks/useJobs'
 import { useJobsActions } from './hooks/useJobsActions'
+import { Job } from './Job'
 
 export function Jobs() {
-  const { jobs } = useJobs(1000, 10 * 1000)
+  const { jobs, setJobStatus } = useJobs(1000, 10 * 1000)
 
   const toolbarFilters = useJobFilters()
   const tableColumns = useJobColumns()
 
-  const view = useInMemoryView<IJob>({
+  const view = useInMemoryView<Job>({
     items: jobs,
     tableColumns: tableColumns,
     toolbarFilters: toolbarFilters,
@@ -20,10 +21,10 @@ export function Jobs() {
   })
 
   const toolbarActions = useJobsActions()
-  const rowActions = useJobActions()
+  const rowActions = useJobActions(setJobStatus)
 
   return (
-    <TablePage<IJob>
+    <TablePage<Job>
       title="Jobs"
       toolbarFilters={toolbarFilters}
       tableColumns={tableColumns}
