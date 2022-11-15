@@ -1,13 +1,13 @@
 import {
   AlertToasterProps,
   ITypedAction,
+  RunningIcon,
   TypedActionType,
   usePageAlertToaster,
 } from '@ansible/ansible-ui-framework'
 import { AlertActionLink, ButtonVariant } from '@patternfly/react-core'
 import { EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
-import { RunningIcon } from '../../common/RunningIcon'
 import { IJob } from './useJobs'
 
 export function useJobActions() {

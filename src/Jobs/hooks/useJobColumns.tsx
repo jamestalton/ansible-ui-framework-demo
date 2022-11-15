@@ -1,6 +1,5 @@
-import { ITableColumn, TextCell } from '@ansible/ansible-ui-framework'
+import { ITableColumn, RunningIcon, TextCell } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
-import { RunningIcon } from '../../common/RunningIcon'
 import { IJob } from './useJobs'
 
 export function useJobColumns() {
