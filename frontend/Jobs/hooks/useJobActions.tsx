@@ -1,10 +1,18 @@
-import { ITypedAction, TypedActionType } from '@ansible/ansible-ui-framework'
-import { ButtonVariant } from '@patternfly/react-core'
+import {
+  AlertToasterProps,
+  ITypedAction,
+  TypedActionType,
+  usePageAlertToaster,
+} from '@ansible/ansible-ui-framework'
+import { AlertActionLink, ButtonVariant } from '@patternfly/react-core'
 import { EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
+import { RunningIcon } from '../../common/RunningIcon'
 import { IJob } from './useJobs'
 
 export function useJobActions() {
+  const pageAlertToaster = usePageAlertToaster()
+
   return useMemo<ITypedAction<IJob>[]>(
     () => [
       {
@@ -12,7 +20,27 @@ export function useJobActions() {
         icon: RocketIcon,
         label: 'Launch job',
         variant: ButtonVariant.primary,
-        onClick: () => alert('TODO'),
+        onClick: (job) => {
+          const alertProps: AlertToasterProps = {
+            variant: 'success',
+            customIcon: <RunningIcon />,
+            title: `Job "${job.name}" running`,
+            actionLinks: (
+              <AlertActionLink onClick={() => alert('Clicked on View details')}>
+                View details
+              </AlertActionLink>
+            ),
+          }
+          pageAlertToaster.addAlert(alertProps)
+          setTimeout(() => {
+            pageAlertToaster.replaceAlert(alertProps, {
+              variant: 'success',
+              title: `Job "${job.name}" completed`,
+              timeout: 10000,
+              actionLinks: alertProps.actionLinks,
+            })
+          }, 5000)
+        },
       },
       {
         type: TypedActionType.single,

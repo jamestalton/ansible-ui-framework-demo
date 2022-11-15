@@ -4,8 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 const webpack = require('webpack')
-const { GenerateSW } = require('workbox-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = function (_env, argv) {
   var isProduction = argv.mode === 'production' || argv.mode === undefined
@@ -28,7 +26,6 @@ module.exports = function (_env, argv) {
           test: /\.(ts|tsx|js|jsx)$/,
           exclude: /node_modules/,
           use: [
-            'coverage-istanbul-loader',
             {
               loader: 'babel-loader',
               options: {
@@ -45,19 +42,14 @@ module.exports = function (_env, argv) {
         'process.env.NODE_ENV': isProduction
           ? JSON.stringify('production')
           : JSON.stringify('development'),
-        'process.env.DELAY': isProduction
-          ? JSON.stringify('')
-          : JSON.stringify(process.env.DELAY ?? ''),
-        'process.env.PWA': _env.pwa ? JSON.stringify('true') : JSON.stringify(''),
       }),
       isDevelopment && new ReactRefreshWebpackPlugin(),
-      new HtmlWebpackPlugin({ title: 'AnsibleDev', template: 'frontend/index.html' }),
+      new HtmlWebpackPlugin({ title: 'Framework Demo', template: 'frontend/index.html' }),
       new MiniCssExtractPlugin({
         filename: '[contenthash].css',
         chunkFilename: '[id].[contenthash:8].css',
         ignoreOrder: false,
       }),
-      _env.pwa && new GenerateSW({ clientsClaim: true, skipWaiting: true }),
     ].filter(Boolean),
     output: {
       clean: true,
@@ -83,15 +75,6 @@ module.exports = function (_env, argv) {
       compress: true,
       hot: true,
       server: 'https',
-      proxy: {
-        '/api': {
-          target: 'https://localhost:3001',
-          secure: false,
-        },
-      },
-      devMiddleware: {
-        writeToDisk: true,
-      },
     },
     devtool: isProduction ? 'source-map' : 'eval-source-map',
   }

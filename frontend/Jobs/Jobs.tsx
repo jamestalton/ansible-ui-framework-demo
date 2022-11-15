@@ -9,13 +9,13 @@ import { useJobsActions } from './hooks/useJobsActions'
 export function Jobs() {
   const { jobs } = useJobs(1000, 10 * 1000)
 
-  const filters = useJobFilters()
-  const columns = useJobColumns()
+  const toolbarFilters = useJobFilters()
+  const tableColumns = useJobColumns()
 
   const view = useInMemoryView<IJob>({
     items: jobs,
-    tableColumns: columns,
-    toolbarFilters: filters,
+    tableColumns: tableColumns,
+    toolbarFilters: toolbarFilters,
     keyFn: idKeyFn,
   })
 
@@ -25,8 +25,8 @@ export function Jobs() {
   return (
     <TablePage<IJob>
       title="Jobs"
-      toolbarFilters={filters}
-      tableColumns={columns}
+      toolbarFilters={toolbarFilters}
+      tableColumns={tableColumns}
       toolbarActions={toolbarActions}
       rowActions={rowActions}
       {...view}

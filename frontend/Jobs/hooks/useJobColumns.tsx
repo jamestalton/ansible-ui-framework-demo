@@ -1,5 +1,6 @@
 import { ITableColumn, TextCell } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
+import { RunningIcon } from '../../common/RunningIcon'
 import { IJob } from './useJobs'
 
 export function useJobColumns() {
@@ -12,7 +13,7 @@ export function useJobColumns() {
       },
       {
         header: 'Status',
-        cell: (job) => <TextCell text={job.status} />,
+        cell: (job) => <TextCell icon={<RunningIcon />} iconSize="sm" text={job.status} />,
         sort: 'status',
       },
     ],
