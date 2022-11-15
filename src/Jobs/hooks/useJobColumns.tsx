@@ -6,6 +6,11 @@ export function useJobColumns() {
   return useMemo<ITableColumn<IJob>[]>(
     () => [
       {
+        header: 'ID',
+        cell: (job) => <TextCell text={job.id.toString()} />,
+        sort: 'id',
+      },
+      {
         header: 'Name',
         cell: (job) => <TextCell text={job.name} />,
         sort: 'name',

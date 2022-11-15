@@ -1,6 +1,6 @@
 import { ITypedAction, TypedActionType } from '@ansible/ansible-ui-framework'
 import { ButtonVariant } from '@patternfly/react-core'
-import { PlusIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
+import { BanIcon, PlusIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
 import { IJob } from './useJobs'
 
@@ -18,6 +18,12 @@ export function useJobsActions() {
         type: TypedActionType.bulk,
         icon: RocketIcon,
         label: 'Run selected jobs',
+        onClick: () => alert('TODO'),
+      },
+      {
+        type: TypedActionType.bulk,
+        icon: BanIcon,
+        label: 'Cancel selected jobs',
         onClick: () => alert('TODO'),
       },
       {

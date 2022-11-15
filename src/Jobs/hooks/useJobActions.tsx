@@ -6,7 +6,7 @@ import {
   usePageAlertToaster,
 } from '@ansible/ansible-ui-framework'
 import { AlertActionLink, ButtonVariant } from '@patternfly/react-core'
-import { EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
+import { BanIcon, EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
 import { IJob } from './useJobs'
 
@@ -41,6 +41,12 @@ export function useJobActions() {
             })
           }, 5000)
         },
+      },
+      {
+        type: TypedActionType.bulk,
+        icon: BanIcon,
+        label: 'Cancel job',
+        onClick: () => alert('TODO'),
       },
       {
         type: TypedActionType.single,
