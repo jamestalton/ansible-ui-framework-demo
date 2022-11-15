@@ -4,7 +4,6 @@ import '@patternfly/patternfly/patternfly-charts-theme-dark.css'
 
 import { PageFrameworkProvider } from '@ansible/ansible-ui-framework'
 import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
 import Main from './Main'
 
 const container = document.createElement('div')
@@ -16,9 +15,7 @@ document.body.appendChild(container)
 
 render(
   <PageFrameworkProvider>
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
+    <Main />
   </PageFrameworkProvider>,
   container
 )
