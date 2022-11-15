@@ -2,39 +2,32 @@
   "name": "@ansible/framework-example",
   "scripts": {
     "start": "webpack serve --mode development",
-    "test": "concurrently --kill-others-on-fail npm:tsc npm:eslint npm:prettier npm:cypress --prefix-colors cyan,green,blue,magenta,gray",
+    "test": "concurrently --kill-others-on-fail npm:tsc npm:eslint npm:prettier --prefix-colors cyan,green,blue",
     "tsc": "tsc --noEmit",
-    "eslint": "eslint --max-warnings=0 frontend",
-    "prettier": "prettier --check frontend"
+    "eslint": "eslint --max-warnings=0 src",
+    "prettier": "prettier --check src"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "^0.0.263",
-    "@types/react": "^17.0.52",
-    "get-value": "^3.0.1",
-    "react": "^17.0.2",
+    "@ansible/ansible-ui-framework": "^0.0.267",
     "react-i18next": "^12.0.0",
-    "react-router-dom": "^6.4.3",
-    "styled-components": "^5.3.6"
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@babel/core": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.8",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.9",
     "@svgr/webpack": "6.5.1",
     "@types/css-minimizer-webpack-plugin": "3.2.0",
     "@types/html-webpack-plugin": "3.2.6",
     "@types/mini-css-extract-plugin": "2.5.0",
     "@types/webpack": "5.28.0",
     "@types/webpack-dev-server": "4.7.1",
-    "@typescript-eslint/eslint-plugin": "5.42.0",
-    "@typescript-eslint/parser": "5.42.0",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
     "babel-loader": "8.3.0",
-    "babel-plugin-istanbul": "6.1.1",
-    "babel-plugin-transform-class-properties": "6.24.1",
     "concurrently": "7.5.0",
-    "copy-webpack-plugin": "11.0.0",
-    "css-loader": "6.7.1",
+    "css-loader": "6.7.2",
     "css-minimizer-webpack-plugin": "4.2.2",
     "eslint": "8.27.0",
     "eslint-config-prettier": "8.5.0",
@@ -42,21 +35,12 @@
     "eslint-plugin-react": "7.31.10",
     "eslint-plugin-react-hooks": "4.6.0",
     "html-webpack-plugin": "5.5.0",
-    "merge-jsons-webpack-plugin": "2.0.1",
     "mini-css-extract-plugin": "2.6.1",
     "react-refresh": "0.14.0",
     "style-loader": "3.3.1",
-    "ts-node": "10.9.1",
     "typescript": "4.8.4",
-    "webpack": "5.74.0",
+    "webpack": "5.75.0",
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "4.11.1"
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "../frontend/src/**/*.ts",
-      "../frontend/src/**/*.tsx"
-    ]
   }
 }

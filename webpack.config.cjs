@@ -9,7 +9,7 @@ module.exports = function (_env, argv) {
   var isProduction = argv.mode === 'production' || argv.mode === undefined
   var isDevelopment = !isProduction
   var config = {
-    entry: './frontend',
+    entry: './src',
     resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
     module: {
       rules: [
@@ -44,7 +44,7 @@ module.exports = function (_env, argv) {
           : JSON.stringify('development'),
       }),
       isDevelopment && new ReactRefreshWebpackPlugin(),
-      new HtmlWebpackPlugin({ title: 'Framework Demo', template: 'frontend/index.html' }),
+      new HtmlWebpackPlugin({ title: 'Framework Demo', template: 'src/index.html' }),
       new MiniCssExtractPlugin({
         filename: '[contenthash].css',
         chunkFilename: '[id].[contenthash:8].css',

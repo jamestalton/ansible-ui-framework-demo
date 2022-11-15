@@ -4,21 +4,37 @@ import {
   ButtonVariant,
   Masthead,
   MastheadMain,
+  MastheadToggle,
+  Nav,
+  NavItem,
+  NavList,
   Page,
+  PageSidebar,
+  PageToggleButton,
   Title,
   Toolbar,
   ToolbarContent,
   ToolbarItem,
 } from '@patternfly/react-core'
-import { CogIcon } from '@patternfly/react-icons'
+import { BarsIcon, CogIcon } from '@patternfly/react-icons'
 import { Jobs } from './Jobs/Jobs'
 
 export default function Main() {
   const openSettings = useSettingsDialog((t: string) => t)
   return (
     <Page
+      isManagedSidebar
       header={
         <Masthead>
+          <MastheadToggle>
+            <PageToggleButton
+              variant="plain"
+              aria-label="Global navigation"
+              id="vertical-nav-toggle"
+            >
+              <BarsIcon />
+            </PageToggleButton>
+          </MastheadToggle>
           <MastheadMain>
             <Title headingLevel="h1" style={{ fontWeight: 'bold', lineHeight: 1.2 }}>
               Ansible Framework Demo
@@ -33,6 +49,19 @@ export default function Main() {
             </ToolbarContent>
           </Toolbar>
         </Masthead>
+      }
+      sidebar={
+        <PageSidebar
+          id="vertical-sidebar"
+          isManagedSidebar
+          nav={
+            <Nav>
+              <NavList>
+                <NavItem isActive>Jobs</NavItem>
+              </NavList>
+            </Nav>
+          }
+        ></PageSidebar>
       }
     >
       <Jobs />
