@@ -16,7 +16,7 @@ export function useCancelJobs() {
       items: jobs.sort((l, r) => compareStrings(l.name, r.name)),
       keyFn: idKeyFn,
       confirmationColumns,
-      actionColumns: confirmationColumns,
+      actionColumns: [confirmationColumns[0], confirmationColumns[1]],
       actionFn: cancelJob,
     })
   }

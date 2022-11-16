@@ -1,12 +1,12 @@
 import { compareStrings, useBulkConfirmation } from '@ansible/ansible-ui-framework'
 import { idKeyFn } from '../../common/idKeyFn'
+import { useJobData } from '../../common/useJobData'
 import { Job } from '../Job'
 import { useJobColumns } from './useJobColumns'
-import { useJobs } from './useJobs'
 
 export function useDeleteJobs() {
   const confirmationColumns = useJobColumns()
-  const { deleteJob } = useJobs()
+  const { deleteJob } = useJobData()
   const bulkAction = useBulkConfirmation<Job>()
   const deleteJobs = (jobs: Job[]) => {
     bulkAction({
@@ -18,7 +18,8 @@ export function useDeleteJobs() {
       isDanger: true,
       confirmationColumns,
       actionColumns: [confirmationColumns[0], confirmationColumns[1]],
-      actionFn: (job: Job) => {
+      actionFn: async (job: Job) => {
+        await new Promise((resolve) => setTimeout(resolve, Math.floor(Math.random() * 4000) + 1000))
         deleteJob(job)
         return Promise.resolve()
       },

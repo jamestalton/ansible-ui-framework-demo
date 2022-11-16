@@ -1,15 +1,15 @@
 import { TablePage, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useNavigate } from 'react-router-dom'
 import { idKeyFn } from '../common/idKeyFn'
+import { useJobData } from '../common/useJobData'
 import { useJobActions } from './hooks/useJobActions'
 import { useJobColumns } from './hooks/useJobColumns'
 import { useJobFilters } from './hooks/useJobFilters'
-import { useJobs } from './hooks/useJobs'
 import { useJobsActions } from './hooks/useJobsActions'
 import { Job } from './Job'
 
 export function Jobs() {
-  const { jobs } = useJobs()
+  const { jobs } = useJobData()
   const navigate = useNavigate()
 
   const toolbarFilters = useJobFilters()

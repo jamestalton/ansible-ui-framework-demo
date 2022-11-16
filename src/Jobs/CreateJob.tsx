@@ -8,10 +8,10 @@ import {
 import { Static, Type } from '@sinclair/typebox'
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useJobs } from './hooks/useJobs'
+import { useJobData } from '../common/useJobData'
 
 export function CreateJob() {
-  const { createJob } = useJobs()
+  const { createJob } = useJobData()
   const navigate = useNavigate()
 
   const JobSchemaType = useMemo(

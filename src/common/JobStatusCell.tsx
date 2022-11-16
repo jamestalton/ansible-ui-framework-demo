@@ -10,7 +10,7 @@ export function JobStatusCell(props: { status: JobStatus }) {
       return <TextCell icon={<CheckCircleIcon />} text={props.status} color="success" />
     case 'Failed':
       return <TextCell icon={<ExclamationCircleIcon />} text={props.status} color="danger" />
-    case 'Cancelled':
+    case 'Canceled':
       return <TextCell icon={<BanIcon />} text={props.status} color="disabled" />
     default:
       return <></>

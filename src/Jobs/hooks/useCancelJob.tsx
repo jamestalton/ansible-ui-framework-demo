@@ -1,11 +1,12 @@
+import { useJobData } from '../../common/useJobData'
 import { Job } from '../Job'
-import { useJobs } from './useJobs'
 
 export function useCancelJob() {
-  const { updateJob } = useJobs()
-  return (job: Job) => {
+  const { updateJob } = useJobData()
+  return async (job: Job) => {
+    await new Promise((resolve) => setTimeout(resolve, Math.floor(Math.random() * 4000) + 1000))
     if (job.status === 'Running') {
-      updateJob(job.id, { status: 'Cancelled', finished: new Date(Date.now()).toISOString() })
+      updateJob(job.id, { status: 'Canceled', finished: new Date(Date.now()).toISOString() })
     }
     return Promise.resolve()
   }

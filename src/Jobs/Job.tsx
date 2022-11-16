@@ -6,6 +6,7 @@ export interface Job {
   finished?: string
   created: string
   modified?: string
+  desiredState?: JobStatus
 }
 
-export type JobStatus = '' | 'Running' | 'Failed' | 'Successful' | 'Cancelled'
+export type JobStatus = '' | 'Running' | 'Failed' | 'Successful' | 'Canceled'

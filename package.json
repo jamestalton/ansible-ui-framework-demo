@@ -9,7 +9,7 @@
     "prettier": "prettier --check src"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "^0.0.280",
+    "@ansible/ansible-ui-framework": "^0.0.283",
     "@sinclair/typebox": "^0.25.8",
     "react-router-dom": "^6.4.3"
   },

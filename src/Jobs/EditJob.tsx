@@ -8,13 +8,13 @@ import {
 import { Static, Type } from '@sinclair/typebox'
 import { useMemo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useJobs } from './hooks/useJobs'
+import { useJobData } from '../common/useJobData'
 
 export function EditJob() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
 
-  const { getJob, updateJob } = useJobs()
+  const { getJob, updateJob } = useJobData()
   const job = getJob(id)
 
   const navigate = useNavigate()

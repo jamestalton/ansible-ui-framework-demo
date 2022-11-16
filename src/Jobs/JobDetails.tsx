@@ -7,15 +7,15 @@ import {
 } from '@ansible/ansible-ui-framework'
 import { DropdownPosition, PageSection } from '@patternfly/react-core'
 import { useParams } from 'react-router-dom'
+import { useJobData } from '../common/useJobData'
 import { useJobActions } from './hooks/useJobActions'
 import { useJobColumns } from './hooks/useJobColumns'
-import { useJobs } from './hooks/useJobs'
 import { Job } from './Job'
 
 export function JobDetails() {
   const params = useParams<{ id: string }>()
   const id = Number(params.id)
-  const { getJob } = useJobs()
+  const { getJob } = useJobData()
   const job = getJob(id)
 
   const tableColumns = useJobColumns()
