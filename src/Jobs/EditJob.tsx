@@ -36,7 +36,7 @@ export function EditJob() {
 
   const onSubmit: FormPageSubmitHandler<JobSchema> = async (job, setError) => {
     try {
-      updateJob(id, job)
+      updateJob(id, { ...job, modified: new Date(Date.now()).toISOString() })
       navigate(-1)
     } catch (err) {
       if (err instanceof Error) {
@@ -45,6 +45,7 @@ export function EditJob() {
         setError('Unknown error')
       }
     }
+    return Promise.resolve()
   }
   const onCancel = () => navigate(-1)
 

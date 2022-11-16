@@ -34,12 +34,12 @@ export function useJobColumns() {
         sort: 'status',
         list: 'secondary',
       },
-      {
-        header: 'Finished',
-        cell: (job) => job.finished && <SinceCell value={job.finished} />,
-        sort: 'status',
-        list: 'secondary',
-      },
+      // {
+      //   header: 'Finished',
+      //   cell: (job) => job.finished && <SinceCell value={job.finished} />,
+      //   sort: 'status',
+      //   list: 'secondary',
+      // },
       {
         header: 'Created',
         cell: (job) => job.created && <SinceCell value={job.created} />,

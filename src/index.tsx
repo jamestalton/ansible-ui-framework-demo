@@ -4,7 +4,7 @@ import '@patternfly/patternfly/patternfly-charts-theme-dark.css'
 
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import Main from './Main'
+import { Main } from './Main'
 
 const container = document.createElement('div')
 container.style.position = 'fixed'

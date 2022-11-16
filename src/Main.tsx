@@ -24,22 +24,28 @@ import { JobsProvider } from './Jobs/hooks/useJobs'
 import { JobDetails } from './Jobs/JobDetails'
 import { Jobs } from './Jobs/Jobs'
 
-export default function Main() {
+export function Main() {
   const navigate = useNavigate()
   return (
-    <PageFramework navigate={navigate}>
-      <JobsProvider>
-        <Page header={<Header />} sidebar={<SideBar />} isManagedSidebar>
-          <Routes>
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/jobs/create" element={<CreateJob />} />
-            <Route path="/jobs/:id" element={<JobDetails />} />
-            <Route path="/jobs/:id/edit" element={<EditJob />} />
-            <Route path="/" element={<Navigate to="/jobs" />} />
-          </Routes>
-        </Page>
-      </JobsProvider>
-    </PageFramework>
+    <Page header={<Header />} sidebar={<SideBar />} isManagedSidebar>
+      <PageFramework navigate={navigate}>
+        <Routing />
+      </PageFramework>
+    </Page>
+  )
+}
+
+function Routing() {
+  return (
+    <JobsProvider>
+      <Routes>
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/jobs/create" element={<CreateJob />} />
+        <Route path="/jobs/:id" element={<JobDetails />} />
+        <Route path="/jobs/:id/edit" element={<EditJob />} />
+        <Route path="/" element={<Navigate to="/jobs" />} />
+      </Routes>
+    </JobsProvider>
   )
 }
 
@@ -54,7 +60,7 @@ function Header() {
       </MastheadToggle>
       <MastheadMain>
         <Title headingLevel="h1" style={{ fontWeight: 'bold', lineHeight: 1.2 }}>
-          Ansible Framework Demo
+          Ansible UI Framework Demo
         </Title>
       </MastheadMain>
       <Toolbar id="toolbar" style={{ padding: 0 }}>

@@ -4,11 +4,15 @@ import { BanIcon, PlusIcon, RocketIcon, TrashIcon } from '@patternfly/react-icon
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Job } from '../Job'
+import { useCancelJobs } from './useCancelJobs'
 import { useDeleteJobs } from './useDeleteJobs'
+import { useLaunchJobs } from './useLaunchJobs'
 
 export function useJobsActions() {
   const navigate = useNavigate()
+  const cancelJobs = useCancelJobs()
   const deleteJobs = useDeleteJobs()
+  const launchJobs = useLaunchJobs()
   return useMemo<ITypedAction<Job>[]>(
     () => [
       {
@@ -21,22 +25,22 @@ export function useJobsActions() {
       {
         type: TypedActionType.bulk,
         icon: RocketIcon,
-        label: 'Run selected jobs',
-        onClick: () => alert('TODO'),
+        label: 'Launch selected jobs',
+        onClick: launchJobs,
       },
       {
         type: TypedActionType.bulk,
         icon: BanIcon,
         label: 'Cancel selected jobs',
-        onClick: () => alert('TODO'),
+        onClick: cancelJobs,
       },
       {
         type: TypedActionType.bulk,
         icon: TrashIcon,
         label: 'Delete selected jobs',
-        onClick: (jobs) => deleteJobs(jobs),
+        onClick: deleteJobs,
       },
     ],
-    [deleteJobs, navigate]
+    [cancelJobs, deleteJobs, launchJobs, navigate]
   )
 }

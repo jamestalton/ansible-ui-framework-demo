@@ -44,7 +44,7 @@ module.exports = function (_env, argv) {
           : JSON.stringify('development'),
       }),
       isDevelopment && new ReactRefreshWebpackPlugin(),
-      new HtmlWebpackPlugin({ title: 'Framework Demo' }),
+      new HtmlWebpackPlugin({ title: 'Ansible UI Framework Demo' }),
       new MiniCssExtractPlugin({
         filename: '[contenthash].css',
         chunkFilename: '[id].[contenthash:8].css',

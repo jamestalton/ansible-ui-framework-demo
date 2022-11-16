@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useCallback, useContext, useState } from 'react'
+import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react'
 import { Job } from '../Job'
 
 export type Jobs = {
@@ -22,7 +22,14 @@ export function useJobs() {
 }
 
 export function JobsProvider(props: { children: ReactNode }) {
-  const [jobs, setJobs] = useState<Job[]>([])
+  const [jobs, setJobs] = useState<Job[]>(() =>
+    new Array(15).fill(0).map(() => ({
+      id: ++id,
+      name: `Job ${id}`,
+      status: '',
+      created: new Date(Date.now()).toISOString(),
+    }))
+  )
 
   const createJob = useCallback((job: { name: string }) => {
     setJobs((jobs) => {
@@ -57,6 +64,37 @@ export function JobsProvider(props: { children: ReactNode }) {
     // await new Promise((resolve) => setTimeout(resolve, Math.floor(Math.random() * 4000) + 1000))
     return jobs.find((job) => job.id === id)
   }
+
+  useEffect(() => {
+    function tick() {
+      setJobs((jobs) => {
+        let changed = false
+        for (const job of jobs) {
+          switch (job.status) {
+            case 'Running':
+              if (job.started && Date.now() - new Date(job.started).valueOf() > 5000) {
+                if (Math.random() < 0.01) {
+                  if (Math.random() < 0.8) {
+                    job.status = 'Successful'
+                  } else {
+                    job.status = 'Failed'
+                  }
+                  job.finished = new Date(Date.now()).toISOString()
+                  changed = true
+                }
+              }
+              break
+          }
+        }
+        if (changed) return [...jobs]
+        else return jobs
+      })
+    }
+    const timeout = setInterval(() => {
+      tick()
+    }, 100)
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <JobsContext.Provider value={{ jobs, createJob, deleteJob, updateJob, getJob }}>
