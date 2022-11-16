@@ -1,5 +1,6 @@
 {
-  "name": "@ansible/ui-framework-demo",
+  "name": "@jamestalton/ansible-ui-framework-demo",
+  "license": "MIT",
   "scripts": {
     "start": "webpack serve --mode development",
     "test": "concurrently --kill-others-on-fail npm:tsc npm:eslint npm:prettier --prefix-colors cyan,green,blue",
