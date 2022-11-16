@@ -69,7 +69,8 @@ export function JobsProvider(props: { children: ReactNode }) {
     function tick() {
       setJobs((jobs) => {
         let changed = false
-        for (const job of jobs) {
+        for (let index = 0; index < jobs.length; index++) {
+          const job = { ...jobs[index] }
           switch (job.status) {
             case 'Running':
               if (job.started && Date.now() - new Date(job.started).valueOf() > 5000) {
@@ -80,6 +81,7 @@ export function JobsProvider(props: { children: ReactNode }) {
                     job.status = 'Failed'
                   }
                   job.finished = new Date(Date.now()).toISOString()
+                  jobs[index] = job
                   changed = true
                 }
               }

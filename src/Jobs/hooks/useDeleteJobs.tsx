@@ -17,7 +17,7 @@ export function useDeleteJobs() {
       keyFn: idKeyFn,
       isDanger: true,
       confirmationColumns,
-      actionColumns: confirmationColumns,
+      actionColumns: [confirmationColumns[0], confirmationColumns[1]],
       actionFn: (job: Job) => {
         deleteJob(job)
         return Promise.resolve()

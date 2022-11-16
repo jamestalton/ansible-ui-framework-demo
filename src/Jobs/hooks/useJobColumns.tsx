@@ -31,7 +31,7 @@ export function useJobColumns() {
       {
         header: 'Started',
         cell: (job) => job.started && <SinceCell value={job.started} />,
-        sort: 'status',
+        sort: 'started',
         list: 'secondary',
       },
       // {
@@ -43,14 +43,14 @@ export function useJobColumns() {
       {
         header: 'Created',
         cell: (job) => job.created && <SinceCell value={job.created} />,
-        sort: 'status',
+        sort: 'created',
         list: 'secondary',
         card: 'hidden',
       },
       {
         header: 'Modified',
         cell: (job) => job.modified && <SinceCell value={job.modified} />,
-        sort: 'status',
+        sort: 'modified',
         list: 'secondary',
         card: 'hidden',
       },
