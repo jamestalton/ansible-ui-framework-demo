@@ -1,18 +1,18 @@
-import {
-  AlertToasterProps,
-  ITypedAction,
-  RunningIcon,
-  TypedActionType,
-  usePageAlertToaster,
-} from '@ansible/ansible-ui-framework'
-import { AlertActionLink, ButtonVariant } from '@patternfly/react-core'
+import { ITypedAction, TypedActionType } from '@ansible/ansible-ui-framework'
+import { ButtonVariant } from '@patternfly/react-core'
 import { BanIcon, EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
-import { Job, JobStatus } from '../Job'
+import { useNavigate } from 'react-router-dom'
+import { Job } from '../Job'
+import { useDeleteJobs } from './useDeleteJobs'
+import { useJobs } from './useJobs'
+import { useLaunchJob } from './useLaunchJob'
 
-export function useJobActions(setJobStatus: (id: number, status: JobStatus) => void) {
-  const pageAlertToaster = usePageAlertToaster()
-
+export function useJobActions() {
+  const launchJob = useLaunchJob()
+  const { updateJob } = useJobs()
+  const deleteJobs = useDeleteJobs()
+  const navigate = useNavigate()
   return useMemo<ITypedAction<Job>[]>(
     () => [
       {
@@ -20,59 +20,30 @@ export function useJobActions(setJobStatus: (id: number, status: JobStatus) => v
         icon: RocketIcon,
         label: 'Launch job',
         variant: ButtonVariant.primary,
-        onClick: (job) => {
-          const alertProps: AlertToasterProps = {
-            variant: 'success',
-            customIcon: <RunningIcon />,
-            title: `Job "${job.name}" running`,
-            actionLinks: (
-              <AlertActionLink onClick={() => alert('Clicked on View details')}>
-                View details
-              </AlertActionLink>
-            ),
-          }
-          setJobStatus(job.id, 'Running')
-          pageAlertToaster.addAlert(alertProps)
-          setTimeout(() => {
-            if (Math.random() < 0.5) {
-              pageAlertToaster.replaceAlert(alertProps, {
-                variant: 'success',
-                title: `Job "${job.name}" successful`,
-                timeout: 10000,
-                actionLinks: alertProps.actionLinks,
-              })
-              setJobStatus(job.id, 'Successful')
-            } else {
-              pageAlertToaster.replaceAlert(alertProps, {
-                variant: 'danger',
-                title: `Job "${job.name}" failed`,
-                actionLinks: alertProps.actionLinks,
-              })
-              setJobStatus(job.id, 'Failed')
-            }
-          }, 5000)
-        },
+        onClick: launchJob,
       },
       {
-        type: TypedActionType.bulk,
+        type: TypedActionType.single,
         icon: BanIcon,
         label: 'Cancel job',
-        onClick: () => alert('TODO'),
+        onClick: (job) => {
+          void updateJob(job.id, { status: 'Cancelled' })
+        },
       },
       {
         type: TypedActionType.single,
         icon: EditIcon,
         label: 'Edit job',
         variant: ButtonVariant.primary,
-        onClick: () => alert('TODO'),
+        onClick: (job) => navigate(`/jobs/${job.id}/edit`),
       },
       {
         type: TypedActionType.single,
         icon: TrashIcon,
         label: 'Delete job',
-        onClick: () => alert('TODO'),
+        onClick: (job) => deleteJobs([job]),
       },
     ],
-    []
+    [deleteJobs, launchJob, navigate, updateJob]
   )
 }

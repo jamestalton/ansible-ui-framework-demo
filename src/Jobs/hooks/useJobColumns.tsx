@@ -1,4 +1,4 @@
-import { ITableColumn, SinceCell, TextCell } from '@ansible/ansible-ui-framework'
+import { ElapsedTimeCell, ITableColumn, SinceCell, TextCell } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { JobStatusCell } from '../../common/JobStatusCell'
 import { Job } from '../Job'
@@ -10,16 +10,23 @@ export function useJobColumns() {
         header: 'ID',
         cell: (job) => <TextCell text={job.id.toString()} />,
         sort: 'id',
+        list: 'secondary',
       },
       {
         header: 'Name',
-        cell: (job) => <TextCell text={job.name} />,
+        cell: (job) => <TextCell text={job.name} to={`/jobs/${job.id}`} />,
         sort: 'name',
+        primary: true,
       },
       {
         header: 'Status',
         cell: (job) => job.status && <JobStatusCell status={job.status} />,
         sort: 'status',
+        // hideLabel: true,
+      },
+      {
+        header: 'Duration',
+        cell: (job) => job.started && <ElapsedTimeCell start={job.started} finish={job.finished} />,
       },
       {
         header: 'Started',

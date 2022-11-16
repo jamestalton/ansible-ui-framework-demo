@@ -1,4 +1,5 @@
 import { TablePage, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { useNavigate } from 'react-router-dom'
 import { idKeyFn } from '../common/idKeyFn'
 import { useJobActions } from './hooks/useJobActions'
 import { useJobColumns } from './hooks/useJobColumns'
@@ -8,7 +9,8 @@ import { useJobsActions } from './hooks/useJobsActions'
 import { Job } from './Job'
 
 export function Jobs() {
-  const { jobs, setJobStatus } = useJobs(1000, 10 * 1000)
+  const { jobs } = useJobs()
+  const navigate = useNavigate()
 
   const toolbarFilters = useJobFilters()
   const tableColumns = useJobColumns()
@@ -21,7 +23,7 @@ export function Jobs() {
   })
 
   const toolbarActions = useJobsActions()
-  const rowActions = useJobActions(setJobStatus)
+  const rowActions = useJobActions()
 
   return (
     <TablePage<Job>
@@ -35,6 +37,7 @@ export function Jobs() {
       emptyStateTitle={'No jobs yet'}
       emptyStateDescription={'To get started, create a job.'}
       emptyStateButtonText={'Create job'}
+      emptyStateButtonClick={() => navigate('/jobs/create')}
     />
   )
 }
