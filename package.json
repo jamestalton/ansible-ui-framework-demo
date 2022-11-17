@@ -3,6 +3,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "test": "concurrently --kill-others-on-fail npm:tsc npm:eslint npm:prettier --prefix-colors cyan,green,blue",
     "tsc": "tsc --noEmit",
     "eslint": "eslint --max-warnings=0 src",
