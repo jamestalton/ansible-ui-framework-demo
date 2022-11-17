@@ -55,7 +55,7 @@ module.exports = function (_env, argv) {
       clean: true,
       filename: isProduction ? '[contenthash].js' : undefined,
       path: path.resolve(__dirname, 'build'),
-      publicPath: isProduction ? '/ansible-ui-framework-demo' : '/',
+      publicPath: isProduction ? '/ansible-ui-framework-demo/' : '/',
     },
     optimization: {
       minimizer: [

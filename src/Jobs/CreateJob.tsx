@@ -33,7 +33,7 @@ export function CreateJob() {
     try {
       // const _newJob = await requestPost<EdaJob>('/api/Jobs', Job)
       // // navigate(RouteE.replace(':id', newJob.id.toString()))
-      await createJob(job)
+      createJob(job)
       navigate('/jobs')
     } catch (err) {
       if (err instanceof Error) {
