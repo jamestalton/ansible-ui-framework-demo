@@ -54,7 +54,7 @@ module.exports = function (_env, argv) {
     output: {
       clean: true,
       filename: isProduction ? '[contenthash].js' : undefined,
-      path: path.resolve(__dirname, 'build/public'),
+      path: path.resolve(__dirname, 'build'),
       publicPath: isProduction ? '/' : '/',
     },
     optimization: {
