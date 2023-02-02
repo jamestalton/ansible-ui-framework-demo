@@ -1,4 +1,4 @@
-import { TablePage, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useNavigate } from 'react-router-dom'
 import { idKeyFn } from '../common/idKeyFn'
 import { useJobData } from '../common/useJobData'
@@ -26,18 +26,20 @@ export function Jobs() {
   const rowActions = useJobActions()
 
   return (
-    <TablePage<Job>
-      title="Jobs"
-      toolbarFilters={toolbarFilters}
-      tableColumns={tableColumns}
-      toolbarActions={toolbarActions}
-      rowActions={rowActions}
-      {...view}
-      errorStateTitle={'Error loading jobs'}
-      emptyStateTitle={'No jobs yet'}
-      emptyStateDescription={'To get started, create a job.'}
-      emptyStateButtonText={'Create job'}
-      emptyStateButtonClick={() => navigate('/jobs/create')}
-    />
+    <PageLayout>
+      <PageHeader title="Jobs" />
+      <PageTable<Job>
+        toolbarFilters={toolbarFilters}
+        tableColumns={tableColumns}
+        toolbarActions={toolbarActions}
+        rowActions={rowActions}
+        {...view}
+        errorStateTitle={'Error loading jobs'}
+        emptyStateTitle={'No jobs yet'}
+        emptyStateDescription={'To get started, create a job.'}
+        emptyStateButtonText={'Create job'}
+        emptyStateButtonClick={() => navigate('/jobs/create')}
+      />
+    </PageLayout>
   )
 }

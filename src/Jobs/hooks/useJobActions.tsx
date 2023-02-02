@@ -1,4 +1,4 @@
-import { ITypedAction, TypedActionType } from '@ansible/ansible-ui-framework'
+import { IPageAction, PageActionType } from '@ansible/ansible-ui-framework'
 import { ButtonVariant } from '@patternfly/react-core'
 import { BanIcon, EditIcon, RocketIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
@@ -14,30 +14,30 @@ export function useJobActions() {
   const cancelJob = useCancelJob()
 
   const navigate = useNavigate()
-  return useMemo<ITypedAction<Job>[]>(
+  return useMemo<IPageAction<Job>[]>(
     () => [
       {
-        type: TypedActionType.single,
+        type: PageActionType.single,
         icon: RocketIcon,
         label: 'Launch job',
         variant: ButtonVariant.primary,
         onClick: (job) => void launchJob(job),
       },
       {
-        type: TypedActionType.single,
+        type: PageActionType.single,
         icon: BanIcon,
         label: 'Cancel job',
         onClick: (job) => void cancelJob(job),
       },
       {
-        type: TypedActionType.single,
+        type: PageActionType.single,
         icon: EditIcon,
         label: 'Edit job',
         variant: ButtonVariant.primary,
         onClick: (job) => navigate(`/jobs/${job.id}/edit`),
       },
       {
-        type: TypedActionType.single,
+        type: PageActionType.single,
         icon: TrashIcon,
         label: 'Delete job',
         onClick: (job) => deleteJobs([job]),

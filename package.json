@@ -10,8 +10,9 @@
     "prettier": "prettier --check src"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "^0.0.283",
+    "@ansible/ansible-ui-framework": "^0.0.540",
     "@sinclair/typebox": "^0.25.8",
+    "react-i18next": "^12.1.5",
     "react-router-dom": "^6.4.3"
   },
   "devDependencies": {

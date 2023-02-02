@@ -34,7 +34,7 @@ export function EditJob() {
 
   type JobSchema = Static<typeof JobSchemaType>
 
-  const onSubmit: FormPageSubmitHandler<JobSchema> = async (job, setError) => {
+  const onSubmit: FormPageSubmitHandler<JobSchema> = async (job, _setError) => {
     try {
       updateJob(id, { ...job, modified: new Date(Date.now()).toISOString() })
       navigate(-1)
