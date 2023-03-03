@@ -21,19 +21,26 @@ import { CreateJob } from './Jobs/CreateJob'
 import { EditJob } from './Jobs/EditJob'
 import { JobDetails } from './Jobs/JobDetails'
 import { Jobs } from './Jobs/Jobs'
+import { CreateUser } from './Users/CreateUser'
+import { Users } from './Users/Users'
 
 export function Main() {
   const navigate = useNavigate()
   return (
     <PageFramework navigate={navigate}>
       <JobsProvider>
-        <Page header={<Header />} sidebar={<SideBar />}>
+        <Page
+          header={<Header />}
+          // sidebar={<SideBar />}
+        >
           <Routes>
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/jobs/create" element={<CreateJob />} />
             <Route path="/jobs/:id" element={<JobDetails />} />
             <Route path="/jobs/:id/edit" element={<EditJob />} />
-            <Route path="/" element={<Navigate to="/jobs" />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/create" element={<CreateUser />} />
+            <Route path="/" element={<Navigate to="/users" />} />
           </Routes>
         </Page>
       </JobsProvider>
@@ -75,6 +82,7 @@ function SideBar() {
         <Nav>
           <NavList>
             <NavItem isActive>Jobs</NavItem>
+            <NavItem isActive>Users</NavItem>
           </NavList>
         </Nav>
       }

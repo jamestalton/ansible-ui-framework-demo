@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@ansible/ansible-ui-framework": "^0.0.580",
+    "@patternfly/patternfly": "^4.224.2",
+    "@patternfly/react-core": "^4.276.6",
+    "@patternfly/react-table": "^4.112.39",
     "@sinclair/typebox": "^0.25.23",
     "@vitejs/plugin-react-swc": "^3.2.0",
     "@vitest/coverage-c8": "^0.28.5",
