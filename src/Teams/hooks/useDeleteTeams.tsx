@@ -13,7 +13,7 @@ export function useDeleteTeams() {
       title: teams.length === 1 ? 'Permanently delete team' : 'Permanently delete teams',
       confirmText: 'Yes, I confirm that I want to delete.',
       actionButtonText: teams.length === 1 ? 'Delete team' : 'Delete teams',
-      items: teams.sort((l, r) => compareStrings(l.teamname, r.teamname)),
+      items: teams.sort((l, r) => compareStrings(l.name, r.name)),
       keyFn: idKeyFn,
       isDanger: true,
       confirmationColumns,
