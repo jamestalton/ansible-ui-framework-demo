@@ -1,24 +1,20 @@
-// import '@patternfly/react-core/dist/styles/base.css'
 import '@patternfly/patternfly/patternfly-base.css'
 import '@patternfly/patternfly/patternfly-charts-theme-dark.css'
 
-import { Suspense } from 'react'
-import { render } from 'react-dom'
+import '@ansible/ansible-ui-framework/style.css'
+// import 'node_modules/vite-css-lib/dist/style.css
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { Main } from './Main'
+import { App } from './App'
+import './i18n'
+import './index.css'
 
-const container = document.createElement('div')
-container.style.position = 'fixed'
-container.style.width = '100%'
-container.style.height = '100%'
-container.style.overflow = 'hidden'
-document.body.appendChild(container)
-
-render(
-  <Suspense fallback={<div />}>
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
     <BrowserRouter>
-      <Main />
+      <App />
     </BrowserRouter>
-  </Suspense>,
-  container
+  </React.StrictMode>
 )

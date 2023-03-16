@@ -1,0 +1,10 @@
+/.DS_Store
+/.dockerignore
+/.git
+/.github
+/.gitignore
+/.vscode
+/Dockerfile
+/coverage
+/dist
+/node_modules
