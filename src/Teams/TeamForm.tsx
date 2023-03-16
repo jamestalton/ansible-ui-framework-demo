@@ -6,9 +6,10 @@ import {
   PageHeader,
   PageLayout,
 } from '@ansible/ansible-ui-framework'
+import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-import { useCreate } from '../common/dataHooks'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useCreate, useGet, useUpdate } from '../common/dataHooks'
 import { Team } from './Team'
 
 export function CreateTeam() {
@@ -28,13 +29,56 @@ export function CreateTeam() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Teams', to: '/teams' }, { label: 'Create Team' }]}
-        title={'Create Team'}
+        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Create team' }]}
+        title={'Create team'}
       />
       <PageForm<Team>
-        submitText={t('Create Team')}
+        submitText={t('Create team')}
         onSubmit={onSubmit}
         onCancel={() => navigate(-1)}
+      >
+        <TeamInputs />
+      </PageForm>
+    </PageLayout>
+  )
+}
+
+export function EditTeam() {
+  const params = useParams<{ id?: string }>()
+  const id = Number(params.id)
+  const team = useGet('teams', id)
+  const navigate = useNavigate()
+  const { t } = useTranslation()
+  const updateTeam = useUpdate('teams')
+
+  if (!team) {
+    return (
+      <Bullseye>
+        <Spinner />
+      </Bullseye>
+    )
+  }
+
+  const onSubmit: PageFormSubmitHandler<Team> = async (team, setError) => {
+    try {
+      await updateTeam(team)
+      navigate(-1)
+    } catch (err) {
+      err instanceof Error ? setError(err.message) : setError('Unknown error')
+    }
+  }
+
+  return (
+    <PageLayout>
+      <PageHeader
+        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Edit Team' }]}
+        title={'Edit Team'}
+      />
+      <PageForm<Team>
+        submitText={t('Save team')}
+        onSubmit={onSubmit}
+        onCancel={() => navigate(-1)}
+        defaultValue={team}
       >
         <TeamInputs />
       </PageForm>

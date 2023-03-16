@@ -21,9 +21,11 @@ import { BarsIcon, CogIcon } from '@patternfly/react-icons'
 import { Dispatch, SetStateAction, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
-import { CreateTeam } from './Teams/TeamForm'
+import { TeamDetails } from './Teams/TeamDetails'
+import { CreateTeam, EditTeam } from './Teams/TeamForm'
 import { Teams } from './Teams/Teams'
-import { CreateUser } from './Users/UserForm'
+import { UserDetails } from './Users/UserDetails'
+import { CreateUser, EditUser } from './Users/UserForm'
 import { Users } from './Users/Users'
 
 const pageNavigationItems: IPageNavigationItem[] = [
@@ -57,7 +59,11 @@ export function App() {
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
           <Route path="/access/users/create" element={<CreateUser />} />
+          <Route path="/access/users/:id/edit" element={<EditUser />} />
+          <Route path="/access/users/:id" element={<UserDetails />} />
           <Route path="/access/teams/create" element={<CreateTeam />} />
+          <Route path="/access/teams/:id/edit" element={<EditTeam />} />
+          <Route path="/access/teams/:id" element={<TeamDetails />} />
           <Route path="/" element={<Navigate to="/access/users" />} />
         </Routes>
       </Page>

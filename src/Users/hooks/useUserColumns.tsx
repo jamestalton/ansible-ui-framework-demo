@@ -1,4 +1,4 @@
-import { ITableColumn } from '@ansible/ansible-ui-framework'
+import { ITableColumn, TextCell } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { User } from '../User'
 
@@ -17,8 +17,7 @@ export function useUserColumns() {
       },
       {
         header: 'Username',
-        type: 'text',
-        value: (user) => user.username,
+        cell: (user: User) => <TextCell text={user.username} to={`/access/users/${user.id}`} />,
         sort: 'username',
         primary: true,
         card: 'name',

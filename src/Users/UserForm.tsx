@@ -6,9 +6,10 @@ import {
   PageHeader,
   PageLayout,
 } from '@ansible/ansible-ui-framework'
+import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-import { useCreate } from '../common/dataHooks'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useCreate, useGet, useUpdate } from '../common/dataHooks'
 import { User, UserType } from './User'
 
 export function CreateUser() {
@@ -36,6 +37,49 @@ export function CreateUser() {
         onSubmit={onSubmit}
         onCancel={() => navigate(-1)}
         defaultValue={{ userType: UserType.Member }}
+      >
+        <UserInputs />
+      </PageForm>
+    </PageLayout>
+  )
+}
+
+export function EditUser() {
+  const params = useParams<{ id?: string }>()
+  const id = Number(params.id)
+  const user = useGet('users', id)
+  const navigate = useNavigate()
+  const { t } = useTranslation()
+  const updateUser = useUpdate('users')
+
+  if (!user) {
+    return (
+      <Bullseye>
+        <Spinner />
+      </Bullseye>
+    )
+  }
+
+  const onSubmit: PageFormSubmitHandler<User> = async (user, setError) => {
+    try {
+      await updateUser(user)
+      navigate(-1)
+    } catch (err) {
+      err instanceof Error ? setError(err.message) : setError('Unknown error')
+    }
+  }
+
+  return (
+    <PageLayout>
+      <PageHeader
+        breadcrumbs={[{ label: 'Users', to: '/access/users' }, { label: 'Edit user' }]}
+        title={'Edit user'}
+      />
+      <PageForm<User>
+        submitText={t('Save user')}
+        onSubmit={onSubmit}
+        onCancel={() => navigate(-1)}
+        defaultValue={user}
       >
         <UserInputs />
       </PageForm>

@@ -5,25 +5,11 @@ export function useTeamFilters() {
   return useMemo<IToolbarFilter[]>(
     () => [
       {
-        key: 'teamname',
-        label: 'Teamname',
+        key: 'name',
+        label: 'Name',
         type: 'string',
-        query: 'teamname',
-        placeholder: 'Filter by teamname',
-      },
-      {
-        key: 'firstname',
-        label: 'First name',
-        type: 'string',
-        query: 'firstName',
-        placeholder: 'Filter by first name',
-      },
-      {
-        key: 'lastname',
-        label: 'Last name',
-        type: 'string',
-        query: 'lastName',
-        placeholder: 'Filter by last name',
+        query: 'name',
+        placeholder: 'Filter by name',
       },
     ],
     []

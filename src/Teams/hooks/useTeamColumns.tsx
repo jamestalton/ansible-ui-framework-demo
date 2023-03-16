@@ -1,4 +1,4 @@
-import { ITableColumn } from '@ansible/ansible-ui-framework'
+import { ITableColumn, TextCell } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { Team } from '../Team'
 
@@ -17,9 +17,8 @@ export function useTeamColumns() {
       },
       {
         header: 'Name',
-        type: 'text',
-        value: (team) => team.name,
-        sort: 'name',
+        cell: (team) => <TextCell text={team.name} to={`/access/teams/${team.id}`} />,
+        sort: 'username',
         primary: true,
         card: 'name',
         list: 'name',
