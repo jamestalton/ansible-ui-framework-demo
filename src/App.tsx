@@ -149,6 +149,7 @@ function PageNavigationItems(props: { items: IPageNavigationItem[]; baseRoute: s
 }
 
 function PageNavigationItem(props: { item: IPageNavigationItem; baseRoute: string }) {
+  const navigate = useNavigate()
   const { item } = props
   const route = props.baseRoute + '/' + item.route
   if ('items' in item) {
@@ -159,7 +160,7 @@ function PageNavigationItem(props: { item: IPageNavigationItem; baseRoute: strin
     )
   }
   return (
-    <NavItem isActive={location.pathname.startsWith(route)} to={route}>
+    <NavItem isActive={location.pathname.startsWith(route)} onClick={() => navigate(route)}>
       {item.title}
     </NavItem>
   )
