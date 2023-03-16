@@ -19,7 +19,7 @@ export function CreateUser() {
   const onSubmit: PageFormSubmitHandler<User> = async (user, setError) => {
     try {
       await createUser(user)
-      navigate('/users')
+      navigate(-1)
     } catch (err) {
       err instanceof Error ? setError(err.message) : setError('Unknown error')
     }

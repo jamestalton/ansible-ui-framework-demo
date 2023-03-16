@@ -19,7 +19,7 @@ export function CreateTeam() {
   const onSubmit: PageFormSubmitHandler<Team> = async (team, setError) => {
     try {
       await createTeam(team)
-      navigate('/access/teams')
+      navigate(-1)
     } catch (err) {
       err instanceof Error ? setError(err.message) : setError('Unknown error')
     }
