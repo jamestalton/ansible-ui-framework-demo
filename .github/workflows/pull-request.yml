@@ -40,6 +40,7 @@ jobs:
       - name: PreCache
         run: npm version 0.0.0 --no-git-tag-version
       - name: Cache dependencies
+        id: cache
         uses: actions/cache@v3
         with:
           path: ./node_modules
