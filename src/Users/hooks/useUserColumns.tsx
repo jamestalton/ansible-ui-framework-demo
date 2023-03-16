@@ -26,6 +26,13 @@ export function useUserColumns() {
         defaultSort: true,
       },
       {
+        header: 'Type',
+        cell: (user) => user.userType,
+        sort: 'username',
+        card: 'subtitle',
+        list: 'subtitle',
+      },
+      {
         header: 'First name',
         type: 'text',
         value: (user) => user.firstName,
@@ -36,6 +43,22 @@ export function useUserColumns() {
         type: 'text',
         value: (user) => user.lastName,
         sort: 'lastName',
+      },
+      {
+        header: 'Created',
+        type: 'datetime',
+        value: (user) => user.created,
+        sort: 'created',
+        list: 'secondary',
+        card: 'hidden',
+      },
+      {
+        header: 'Modified',
+        type: 'datetime',
+        value: (user) => user.modified,
+        sort: 'modified',
+        list: 'secondary',
+        card: 'hidden',
       },
     ],
     []

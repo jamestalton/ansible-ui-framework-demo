@@ -3,29 +3,29 @@ import { ButtonVariant } from '@patternfly/react-core'
 import { PlusIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User } from '../User'
-import { useDeleteUsers } from './useDeleteUsers'
+import { Team } from '../Team'
+import { useDeleteTeams } from './useDeleteTeams'
 
-export function useUsersActions() {
+export function useTeamsActions() {
   const navigate = useNavigate()
-  const deleteUsers = useDeleteUsers()
-  return useMemo<IPageAction<User>[]>(
+  const deleteTeams = useDeleteTeams()
+  return useMemo<IPageAction<Team>[]>(
     () => [
       {
         type: PageActionType.button,
         icon: PlusIcon,
-        label: 'Create user',
+        label: 'Create team',
         variant: ButtonVariant.primary,
-        onClick: () => navigate('/access/users/create'),
+        onClick: () => navigate('/access/teams/create'),
       },
       {
         type: PageActionType.bulk,
         icon: TrashIcon,
-        label: 'Delete selected users',
-        onClick: deleteUsers,
+        label: 'Delete selected teams',
+        onClick: deleteTeams,
         isDanger: true,
       },
     ],
-    [deleteUsers, navigate]
+    [deleteTeams, navigate]
   )
 }

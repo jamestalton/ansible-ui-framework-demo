@@ -1,16 +1,18 @@
 import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from '../common/dataHooks'
 import { idKeyFn } from '../common/idKeyFn'
 import { useUserActions } from './hooks/useUserActions'
 import { useUserColumns } from './hooks/useUserColumns'
 import { useUserFilters } from './hooks/useUserFilters'
-import { useItems } from './hooks/useUsers'
 import { useUsersActions } from './hooks/useUsersActions'
 import { User } from './User'
 
 export function Users() {
-  const { users, loading } = useItems<User>('users')
+  const users = useQuery('users')
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const toolbarFilters = useUserFilters()
   const tableColumns = useUserColumns()
@@ -28,9 +30,12 @@ export function Users() {
   return (
     <PageLayout>
       <PageHeader
-        title="Ansible Wisdom"
-        description="This group contains all the users assigned Ansible Wisdom seats within your organization"
-        headerActions="Seats avaiable 10 of 10"
+        // breadcrumbs={[
+        //   { label: 'Home', to: '/' },
+        //   { label: 'Access', to: '/access' },
+        //   { label: 'Users' },
+        // ]}
+        title="Users"
       />
       <PageTable<User>
         toolbarFilters={toolbarFilters}
@@ -38,13 +43,11 @@ export function Users() {
         toolbarActions={toolbarActions}
         rowActions={rowActions}
         {...view}
-        errorStateTitle={'Something went wrong'}
-        emptyStateTitle={
-          'There are currently no users in your organization assigned to Ansible Wisdom seats.'
-        }
-        emptyStateDescription={'To get started, create a user.'}
-        emptyStateButtonText={'Create user'}
-        emptyStateButtonClick={() => navigate('/users/create')}
+        errorStateTitle={t('Error loading users')}
+        emptyStateTitle={t('No users yet')}
+        emptyStateDescription={t('To get started, create a user.')}
+        emptyStateButtonText={t('Create user')}
+        emptyStateButtonClick={() => navigate('/access/users/create')}
       />
     </PageLayout>
   )
