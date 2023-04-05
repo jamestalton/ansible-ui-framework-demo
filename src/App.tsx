@@ -44,7 +44,7 @@ export function App() {
   const [sidebarOpen, setSidebarOpen] = useState(() => localStorage.getItem('nav-open') === 'true')
   const routes = useMemo(() => {
     const routes: IPageRoute[] = []
-    addPageNavigationRoutes(pageNavigationItems, '', routes)
+    addPageNavigationRoutes(pageNavigationItems, '/ansible-ui-framework-demo', routes)
     return routes
   }, [])
 
