@@ -8,6 +8,6 @@ export enum UserType {
 export interface User extends IRecord {
   username: string
   userType: UserType
-  firstName: string
-  lastName: string
+  firstName?: string
+  lastName?: string
 }

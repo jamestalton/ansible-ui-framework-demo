@@ -21,6 +21,7 @@ import { BarsIcon, CogIcon } from '@patternfly/react-icons'
 import { Dispatch, SetStateAction, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import { Debug } from './Debug/Debug'
 import { TeamDetails } from './Teams/TeamDetails'
 import { CreateTeam, EditTeam } from './Teams/TeamForm'
 import { Teams } from './Teams/Teams'
@@ -37,14 +38,16 @@ const pageNavigationItems: IPageNavigationItem[] = [
       { title: 'Teams', route: 'teams', element: <Teams /> },
     ],
   },
+  { title: 'Debug', route: 'debug', element: <Debug /> },
 ]
 
 export function App() {
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(() => localStorage.getItem('nav-open') === 'true')
+  const base = '/ansible-ui-framework-demo'
   const routes = useMemo(() => {
     const routes: IPageRoute[] = []
-    addPageNavigationRoutes(pageNavigationItems, '/ansible-ui-framework-demo', routes)
+    addPageNavigationRoutes(pageNavigationItems, base, routes)
     return routes
   }, [])
 
@@ -52,19 +55,19 @@ export function App() {
     <PageFramework navigate={navigate}>
       <Page
         header={<Header setSidebarOpen={setSidebarOpen} />}
-        sidebar={<SideBar sidebarOpen={sidebarOpen} />}
+        sidebar={<SideBar sidebarOpen={sidebarOpen} base={base} />}
       >
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
-          <Route path="/access/users/create" element={<CreateUser />} />
-          <Route path="/access/users/:id/edit" element={<EditUser />} />
-          <Route path="/access/users/:id" element={<UserDetails />} />
-          <Route path="/access/teams/create" element={<CreateTeam />} />
-          <Route path="/access/teams/:id/edit" element={<EditTeam />} />
-          <Route path="/access/teams/:id" element={<TeamDetails />} />
-          <Route path="/" element={<Navigate to="/access/users" />} />
+          <Route path={`${base}/access/users/create`} element={<CreateUser />} />
+          <Route path={`${base}/access/users/:id/edit"`} element={<EditUser />} />
+          <Route path={`${base}/access/users/:id`} element={<UserDetails />} />
+          <Route path={`${base}/access/teams/create`} element={<CreateTeam />} />
+          <Route path={`${base}/access/teams/:id/edit`} element={<EditTeam />} />
+          <Route path={`${base}/access/teams/:id`} element={<TeamDetails />} />
+          <Route path="*" element={<Navigate to={`${base}/access/users`} />} />
         </Routes>
       </Page>
     </PageFramework>
@@ -113,7 +116,7 @@ function Header(props: { setSidebarOpen: Dispatch<SetStateAction<boolean>> }) {
   )
 }
 
-function SideBar(props: { sidebarOpen: boolean }) {
+function SideBar(props: { sidebarOpen: boolean; base: string }) {
   return (
     <PageSidebar
       isNavOpen={props.sidebarOpen}
@@ -121,7 +124,7 @@ function SideBar(props: { sidebarOpen: boolean }) {
         <>
           <Nav>
             <NavList>
-              <PageNavigationItems baseRoute="" items={pageNavigationItems} />
+              <PageNavigationItems baseRoute={props.base} items={pageNavigationItems} />
             </NavList>
           </Nav>
         </>
