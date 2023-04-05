@@ -72,8 +72,8 @@ export function App() {
 }
 
 function Header(props: { setSidebarOpen: Dispatch<SetStateAction<boolean>> }) {
-  const openSettings = useSettingsDialog((t: string) => t)
   const { t } = useTranslation()
+  const openSettings = useSettingsDialog(t)
   return (
     <Masthead>
       <MastheadToggle>
