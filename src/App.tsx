@@ -62,7 +62,7 @@ export function App() {
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
           <Route path={`${base}/access/users/create`} element={<CreateUser />} />
-          <Route path={`${base}/access/users/:id/edit"`} element={<EditUser />} />
+          <Route path={`${base}/access/users/:id/edit`} element={<EditUser />} />
           <Route path={`${base}/access/users/:id`} element={<UserDetails />} />
           <Route path={`${base}/access/teams/create`} element={<CreateTeam />} />
           <Route path={`${base}/access/teams/:id/edit`} element={<EditTeam />} />
