@@ -47,7 +47,7 @@ export function Users() {
         emptyStateTitle={t('No users yet')}
         emptyStateDescription={t('To get started, create a user.')}
         emptyStateButtonText={t('Create user')}
-        emptyStateButtonClick={() => navigate('/access/users/create')}
+        emptyStateButtonClick={() => navigate('/ansible-ui-framework-demo/access/users/create')}
       />
     </PageLayout>
   )

@@ -16,7 +16,7 @@ export function useUsersActions() {
         icon: PlusIcon,
         label: 'Create user',
         variant: ButtonVariant.primary,
-        onClick: () => navigate('/access/users/create'),
+        onClick: () => navigate('/ansible-ui-framework-demo/access/users/create'),
       },
       {
         type: PageActionType.bulk,

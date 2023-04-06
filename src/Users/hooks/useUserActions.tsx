@@ -17,7 +17,7 @@ export function useUserActions() {
         icon: EditIcon,
         label: 'Edit user',
         variant: ButtonVariant.primary,
-        onClick: (user) => navigate(`/access/users/${user.id}/edit`),
+        onClick: (user) => navigate(`/ansible-ui-framework-demo/access/users/${user.id}/edit`),
       },
       {
         type: PageActionType.single,

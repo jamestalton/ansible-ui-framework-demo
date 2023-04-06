@@ -17,7 +17,12 @@ export function useUserColumns() {
       },
       {
         header: 'Username',
-        cell: (user: User) => <TextCell text={user.username} to={`/access/users/${user.id}`} />,
+        cell: (user: User) => (
+          <TextCell
+            text={user.username}
+            to={`/ansible-ui-framework-demo/access/users/${user.id}`}
+          />
+        ),
         sort: 'username',
         primary: true,
         card: 'name',

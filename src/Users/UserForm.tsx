@@ -72,7 +72,7 @@ export function EditUser() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Users', to: '/access/users' }, { label: 'Edit user' }]}
+        breadcrumbs={[{ label: 'Users', to: '/ansible-ui-framework-demo/access/users' }, { label: 'Edit user' }]}
         title={'Edit user'}
       />
       <PageForm<User>
