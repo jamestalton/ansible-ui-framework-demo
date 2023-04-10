@@ -16,7 +16,7 @@ export function useTeamsActions() {
         icon: PlusIcon,
         label: 'Create team',
         variant: ButtonVariant.primary,
-        onClick: () => navigate('/access/teams/create'),
+        onClick: () => navigate('/ansible-ui-framework-demo/access/teams/create'),
       },
       {
         type: PageActionType.bulk,

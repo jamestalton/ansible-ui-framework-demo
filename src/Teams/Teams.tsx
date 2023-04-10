@@ -47,7 +47,7 @@ export function Teams() {
         emptyStateTitle={t('No teams yet')}
         emptyStateDescription={t('To get started, create a team.')}
         emptyStateButtonText={t('Create team')}
-        emptyStateButtonClick={() => navigate('/access/teams/create')}
+        emptyStateButtonClick={() => navigate('/ansible-ui-framework-demo/access/teams/create')}
         defaultSubtitle="team"
         expandedRow={(team) => team.description}
       />
