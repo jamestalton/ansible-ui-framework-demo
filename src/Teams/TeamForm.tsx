@@ -1,10 +1,10 @@
 import {
-  PageForm,
-  PageFormSubmitHandler,
-  PageFormTextArea,
-  PageFormTextInput,
-  PageHeader,
-  PageLayout,
+    PageForm,
+    PageFormSubmitHandler,
+    PageFormTextArea,
+    PageFormTextInput,
+    PageHeader,
+    PageLayout,
 } from '@ansible/ansible-ui-framework'
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
@@ -29,7 +29,7 @@ export function CreateTeam() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Create team' }]}
+        breadcrumbs={[{ label: 'Teams', to '/ansible-ui-framework-demo/access/teams' }, { label: 'Create team' }]}
         title={'Create team'}
       />
       <PageForm<Team>
@@ -71,7 +71,7 @@ export function EditTeam() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Edit Team' }]}
+        breadcrumbs={[{ label: 'Teams', to '/ansible-ui-framework-demo/access/teams' }, { label: 'Edit Team' }]}
         title={'Edit Team'}
       />
       <PageForm<Team>
