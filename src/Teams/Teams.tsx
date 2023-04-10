@@ -32,7 +32,7 @@ export function Teams() {
       <PageHeader
         // breadcrumbs={[
         //   { label: 'Home', to: '/' },
-        //   { label: 'Access', to '/ansible-ui-framework-demo/access' },
+        //   { label: 'Access', to: '/ansible-ui-framework-demo/access' },
         //   { label: 'Teams' },
         // ]}
         title="Teams"

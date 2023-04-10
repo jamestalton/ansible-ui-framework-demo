@@ -22,7 +22,10 @@ export function TeamDetails() {
     <PageLayout>
       <PageHeader
         title={team.name}
-        breadcrumbs={[{ label: 'Teams', to '/ansible-ui-framework-demo/access/teams' }, { label: team.name }]}
+        breadcrumbs={[
+          { label: 'Teams', to: '/ansible-ui-framework-demo/access/teams' },
+          { label: team.name },
+        ]}
       />
       <PageDetails>
         <PageDetail label={t('Name') ?? ''}>{team.name}</PageDetail>
