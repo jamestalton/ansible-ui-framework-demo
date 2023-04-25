@@ -1,6 +1,7 @@
 # Ansible UI Framework Demo
 
 [Live Demo](jamestalton.github.io/ansible-ui-framework-demo/)
+
 [Framework Documentation](https://github.com/ansible/ansible-ui/wiki/Ansible-UI-Framework)
 
 ## Getting Started
