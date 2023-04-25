@@ -28,11 +28,3 @@
     ```
     npm start
     ```
-
-## Docker Image
-
-```
-docker run --rm -p 3456:8080 ghcr.io/jamestalton/ansible-ui-framework-demo:main
-```
-
-The demo should be running on <http://localhost:3456>
