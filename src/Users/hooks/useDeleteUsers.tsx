@@ -1,5 +1,5 @@
 import { compareStrings, useBulkConfirmation } from '@ansible/ansible-ui-framework'
-import { useDelete } from '../../common/dataHooks'
+import { useIdbDeleteItem } from '../../common/IDBProvider'
 import { idKeyFn } from '../../common/idKeyFn'
 import { User } from '../User'
 import { useUserColumns } from './useUserColumns'
@@ -7,7 +7,7 @@ import { useUserColumns } from './useUserColumns'
 export function useDeleteUsers() {
   const confirmationColumns = useUserColumns()
   const bulkAction = useBulkConfirmation<User>()
-  const deleteUser = useDelete('users')
+  const deleteUser = useIdbDeleteItem('users')
   const deleteUsers = (users: User[]) => {
     bulkAction({
       title: users.length === 1 ? 'Permanently delete user' : 'Permanently delete users',

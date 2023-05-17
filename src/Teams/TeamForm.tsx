@@ -9,13 +9,13 @@ import {
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useCreate, useGet, useUpdate } from '../common/dataHooks'
+import { useIdbItem, useIdbPutItem } from '../common/IDBProvider'
 import { Team } from './Team'
 
 export function CreateTeam() {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const createTeam = useCreate('teams')
+  const createTeam = useIdbPutItem('teams')
 
   const onSubmit: PageFormSubmitHandler<Team> = async (team, setError) => {
     try {
@@ -49,10 +49,10 @@ export function CreateTeam() {
 export function EditTeam() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
-  const team = useGet('teams', id)
+  const team = useIdbItem('teams', id)
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const updateTeam = useUpdate('teams')
+  const updateTeam = useIdbPutItem('teams')
 
   if (!team) {
     return (

@@ -1,6 +1,6 @@
-import { IRecord } from '../common/record'
+import { IndexDbRecord } from '../common/IDBProvider'
 
-export interface Team extends IRecord {
+export interface Team extends IndexDbRecord {
   name: string
   description: string
 }

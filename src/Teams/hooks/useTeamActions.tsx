@@ -1,4 +1,4 @@
-import { IPageAction, PageActionType } from '@ansible/ansible-ui-framework'
+import { IPageAction, PageActionSelection, PageActionType } from '@ansible/ansible-ui-framework'
 import { ButtonVariant } from '@patternfly/react-core'
 import { EditIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
@@ -13,14 +13,16 @@ export function useTeamActions() {
   return useMemo<IPageAction<Team>[]>(
     () => [
       {
-        type: PageActionType.single,
+        type: PageActionType.Button,
+        selection: PageActionSelection.Single,
         icon: EditIcon,
         label: 'Edit team',
         variant: ButtonVariant.primary,
         onClick: (team) => navigate(`/ansible-ui-framework-demo/access/teams/${team.id}/edit`),
       },
       {
-        type: PageActionType.single,
+        type: PageActionType.Button,
+        selection: PageActionSelection.Single,
         icon: TrashIcon,
         label: 'Delete team',
         onClick: (team) => deleteTeams([team]),

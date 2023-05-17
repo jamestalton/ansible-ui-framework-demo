@@ -45,11 +45,6 @@ export function App() {
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(() => localStorage.getItem('nav-open') === 'true')
   const base = '/ansible-ui-framework-demo'
-  const routes = useMemo(() => {
-    const routes: IPageRoute[] = []
-    addPageNavigationRoutes(pageNavigationItems, base, routes)
-    return routes
-  }, [])
 
   return (
     <PageFramework navigate={navigate}>
@@ -57,20 +52,34 @@ export function App() {
         header={<Header setSidebarOpen={setSidebarOpen} />}
         sidebar={<SideBar sidebarOpen={sidebarOpen} base={base} />}
       >
-        <Routes>
-          {routes.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))}
-          <Route path={`${base}/access/users/create`} element={<CreateUser />} />
-          <Route path={`${base}/access/users/:id/edit`} element={<EditUser />} />
-          <Route path={`${base}/access/users/:id`} element={<UserDetails />} />
-          <Route path={`${base}/access/teams/create`} element={<CreateTeam />} />
-          <Route path={`${base}/access/teams/:id/edit`} element={<EditTeam />} />
-          <Route path={`${base}/access/teams/:id`} element={<TeamDetails />} />
-          <Route path="*" element={<Navigate to={`${base}/access/users`} />} />
-        </Routes>
+        <AppRoutes />
       </Page>
     </PageFramework>
+  )
+}
+
+function AppRoutes() {
+  const base = '/ansible-ui-framework-demo'
+
+  const routes = useMemo(() => {
+    const routes: IPageRoute[] = []
+    addPageNavigationRoutes(pageNavigationItems, base, routes)
+    return routes
+  }, [])
+
+  return (
+    <Routes>
+      {routes.map((route) => (
+        <Route key={route.path} path={route.path} element={route.element} />
+      ))}
+      <Route path={`${base}/access/users/create`} element={<CreateUser />} />
+      <Route path={`${base}/access/users/:id/edit`} element={<EditUser />} />
+      <Route path={`${base}/access/users/:id`} element={<UserDetails />} />
+      <Route path={`${base}/access/teams/create`} element={<CreateTeam />} />
+      <Route path={`${base}/access/teams/:id/edit`} element={<EditTeam />} />
+      <Route path={`${base}/access/teams/:id`} element={<TeamDetails />} />
+      <Route path="*" element={<Navigate to={`${base}/access/users`} />} />
+    </Routes>
   )
 }
 

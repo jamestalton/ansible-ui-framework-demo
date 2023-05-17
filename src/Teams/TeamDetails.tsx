@@ -2,12 +2,12 @@ import { PageDetail, PageDetails, PageHeader, PageLayout } from '@ansible/ansibl
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
-import { useGet } from '../common/dataHooks'
+import { useIdbItem } from '../common/IDBProvider'
 
 export function TeamDetails() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
-  const team = useGet('teams', id)
+  const team = useIdbItem('teams', id)
   const { t } = useTranslation()
 
   if (!team) {

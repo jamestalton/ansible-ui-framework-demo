@@ -9,13 +9,13 @@ import {
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useCreate, useGet, useUpdate } from '../common/dataHooks'
+import { useIdbItem, useIdbPutItem } from '../common/IDBProvider'
 import { User, UserType } from './User'
 
 export function CreateUser() {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const createUser = useCreate('users')
+  const createUser = useIdbPutItem('users')
 
   const onSubmit: PageFormSubmitHandler<User> = async (user, setError) => {
     try {
@@ -47,10 +47,10 @@ export function CreateUser() {
 export function EditUser() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
-  const user = useGet('users', id)
+  const user = useIdbItem('users', id)
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const updateUser = useUpdate('users')
+  const updateUser = useIdbPutItem('users')
 
   if (!user) {
     return (
@@ -72,7 +72,10 @@ export function EditUser() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Users', to: '/ansible-ui-framework-demo/access/users' }, { label: 'Edit user' }]}
+        breadcrumbs={[
+          { label: 'Users', to: '/ansible-ui-framework-demo/access/users' },
+          { label: 'Edit user' },
+        ]}
         title={'Edit user'}
       />
       <PageForm<User>

@@ -1,7 +1,8 @@
 import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useQuery } from '../common/dataHooks'
+import { useIdbItems } from '../common/IDBProvider'
 import { idKeyFn } from '../common/idKeyFn'
 import { Team } from './Team'
 import { useTeamActions } from './hooks/useTeamActions'
@@ -10,7 +11,7 @@ import { useTeamFilters } from './hooks/useTeamFilters'
 import { useTeamsActions } from './hooks/useTeamsActions'
 
 export function Teams() {
-  const teams = useQuery('teams')
+  const teams = useIdbItems('teams')
   const navigate = useNavigate()
   const { t } = useTranslation()
 
@@ -26,6 +27,11 @@ export function Teams() {
 
   const toolbarActions = useTeamsActions()
   const rowActions = useTeamActions()
+
+  useEffect(() => {
+    console.log('teams mount')
+    return () => console.log('teams unmount')
+  }, [])
 
   return (
     <PageLayout>

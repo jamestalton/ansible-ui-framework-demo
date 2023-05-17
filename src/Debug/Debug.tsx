@@ -4,18 +4,19 @@ import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { UserType } from '../Users/User'
-import { useCreate } from '../common/dataHooks'
+import { useIdbPutItem } from '../common/IDBProvider'
 
 export function Debug() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const createUser = useCreate('users')
+  const createUser = useIdbPutItem('users')
   const createUsers = useCallback(() => {
     void fetch('https://hp-api.onrender.com/api/characters/students').then((response) => {
       if (response.ok) {
-        void response.json().then((students: { name: string }[]) => {
+        void response.json().then((students: { id: string; name: string }[]) => {
           for (const student of students) {
             void createUser({
+              id: student.id,
               username: student.name,
               userType: UserType.Member,
             })

@@ -1,7 +1,7 @@
 import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useQuery } from '../common/dataHooks'
+import { useIdbItems } from '../common/IDBProvider'
 import { idKeyFn } from '../common/idKeyFn'
 import { User } from './User'
 import { useUserActions } from './hooks/useUserActions'
@@ -10,7 +10,7 @@ import { useUserFilters } from './hooks/useUserFilters'
 import { useUsersActions } from './hooks/useUsersActions'
 
 export function Users() {
-  const users = useQuery('users')
+  const users = useIdbItems('users')
   const navigate = useNavigate()
   const { t } = useTranslation()
 

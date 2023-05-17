@@ -1,4 +1,4 @@
-import { IPageAction, PageActionType } from '@ansible/ansible-ui-framework'
+import { IPageAction, PageActionSelection, PageActionType } from '@ansible/ansible-ui-framework'
 import { ButtonVariant } from '@patternfly/react-core'
 import { PlusIcon, TrashIcon } from '@patternfly/react-icons'
 import { useMemo } from 'react'
@@ -12,14 +12,16 @@ export function useUsersActions() {
   return useMemo<IPageAction<User>[]>(
     () => [
       {
-        type: PageActionType.button,
+        type: PageActionType.Button,
+        selection: PageActionSelection.Single,
         icon: PlusIcon,
         label: 'Create user',
         variant: ButtonVariant.primary,
         onClick: () => navigate('/ansible-ui-framework-demo/access/users/create'),
       },
       {
-        type: PageActionType.bulk,
+        type: PageActionType.Button,
+        selection: PageActionSelection.Multiple,
         icon: TrashIcon,
         label: 'Delete selected users',
         onClick: deleteUsers,

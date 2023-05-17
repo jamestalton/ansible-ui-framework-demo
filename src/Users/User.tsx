@@ -1,11 +1,11 @@
-import { IRecord } from '../common/record'
+import { IndexDbRecord } from '../common/IDBProvider'
 
 export enum UserType {
   Admin = 'admin',
   Member = 'member',
 }
 
-export interface User extends IRecord {
+export interface User extends IndexDbRecord {
   username: string
   userType: UserType
   firstName?: string

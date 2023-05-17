@@ -2,12 +2,12 @@ import { PageDetail, PageDetails, PageHeader, PageLayout } from '@ansible/ansibl
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
-import { useGet } from '../common/dataHooks'
+import { useIdbItem } from '../common/IDBProvider'
 
 export function UserDetails() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
-  const user = useGet('users', id)
+  const user = useIdbItem('users', id)
   const { t } = useTranslation()
 
   if (!user) {
@@ -22,7 +22,10 @@ export function UserDetails() {
     <PageLayout>
       <PageHeader
         title={user.username}
-        breadcrumbs={[{ label: 'Users', to: '/ansible-ui-framework-demo/access/users' }, { label: user.username }]}
+        breadcrumbs={[
+          { label: 'Users', to: '/ansible-ui-framework-demo/access/users' },
+          { label: user.username },
+        ]}
       />
       <PageDetails>
         <PageDetail label={t('Username') ?? ''}>{user.username}</PageDetail>
