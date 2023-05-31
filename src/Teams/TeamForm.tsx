@@ -27,12 +27,9 @@ export function CreateTeam() {
   }
 
   return (
-    <PageLayout>
+    <>
       <PageHeader
-        breadcrumbs={[
-          { label: 'Teams', to: '/ansible-ui-framework-demo/access/teams' },
-          { label: 'Create team' },
-        ]}
+        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Create team' }]}
         title={'Create team'}
       />
       <PageForm<Team>
@@ -42,7 +39,7 @@ export function CreateTeam() {
       >
         <TeamInputs />
       </PageForm>
-    </PageLayout>
+    </>
   )
 }
 
@@ -74,10 +71,7 @@ export function EditTeam() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[
-          { label: 'Teams', to: '/ansible-ui-framework-demo/access/teams' },
-          { label: 'Edit Team' },
-        ]}
+        breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: 'Edit Team' }]}
         title={'Edit Team'}
       />
       <PageForm<Team>

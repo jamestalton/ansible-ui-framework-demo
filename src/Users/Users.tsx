@@ -28,11 +28,11 @@ export function Users() {
   const rowActions = useUserActions()
 
   return (
-    <PageLayout>
+    <>
       <PageHeader
         // breadcrumbs={[
         //   { label: 'Home', to: '/' },
-        //   { label: 'Access', to: '/ansible-ui-framework-demo/access' },
+        //   { label: 'Access', to: '/access' },
         //   { label: 'Users' },
         // ]}
         title="Users"
@@ -47,8 +47,8 @@ export function Users() {
         emptyStateTitle={t('No users yet')}
         emptyStateDescription={t('To get started, create a user.')}
         emptyStateButtonText={t('Create user')}
-        emptyStateButtonClick={() => navigate('/ansible-ui-framework-demo/access/users/create')}
+        emptyStateButtonClick={() => navigate('/access/users/create')}
       />
-    </PageLayout>
+    </>
   )
 }

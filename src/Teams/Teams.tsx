@@ -1,5 +1,4 @@
-import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
-import { useEffect } from 'react'
+import { PageHeader, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useIdbItems } from '../common/IDBProvider'
@@ -28,17 +27,12 @@ export function Teams() {
   const toolbarActions = useTeamsActions()
   const rowActions = useTeamActions()
 
-  useEffect(() => {
-    console.log('teams mount')
-    return () => console.log('teams unmount')
-  }, [])
-
   return (
-    <PageLayout>
+    <>
       <PageHeader
         // breadcrumbs={[
         //   { label: 'Home', to: '/' },
-        //   { label: 'Access', to: '/ansible-ui-framework-demo/access' },
+        //   { label: 'Access', to: '/access' },
         //   { label: 'Teams' },
         // ]}
         title="Teams"
@@ -53,10 +47,10 @@ export function Teams() {
         emptyStateTitle={t('No teams yet')}
         emptyStateDescription={t('To get started, create a team.')}
         emptyStateButtonText={t('Create team')}
-        emptyStateButtonClick={() => navigate('/ansible-ui-framework-demo/access/teams/create')}
+        emptyStateButtonClick={() => navigate('/access/teams/create')}
         defaultSubtitle="team"
         expandedRow={(team) => team.description}
       />
-    </PageLayout>
+    </>
   )
 }

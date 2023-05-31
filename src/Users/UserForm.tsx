@@ -29,7 +29,7 @@ export function CreateUser() {
   return (
     <PageLayout>
       <PageHeader
-        breadcrumbs={[{ label: 'Users', to: '/users' }, { label: 'Create User' }]}
+        breadcrumbs={[{ label: 'Users', to: '/access/users' }, { label: 'Create User' }]}
         title={'Create User'}
       />
       <PageForm<User>
@@ -70,12 +70,9 @@ export function EditUser() {
   }
 
   return (
-    <PageLayout>
+    <>
       <PageHeader
-        breadcrumbs={[
-          { label: 'Users', to: '/ansible-ui-framework-demo/access/users' },
-          { label: 'Edit user' },
-        ]}
+        breadcrumbs={[{ label: 'Users', to: '/access/users' }, { label: 'Edit user' }]}
         title={'Edit user'}
       />
       <PageForm<User>
@@ -86,7 +83,7 @@ export function EditUser() {
       >
         <UserInputs />
       </PageForm>
-    </PageLayout>
+    </>
   )
 }
 

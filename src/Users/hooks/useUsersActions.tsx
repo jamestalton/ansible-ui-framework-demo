@@ -13,11 +13,11 @@ export function useUsersActions() {
     () => [
       {
         type: PageActionType.Button,
-        selection: PageActionSelection.Single,
+        selection: PageActionSelection.None,
         icon: PlusIcon,
         label: 'Create user',
         variant: ButtonVariant.primary,
-        onClick: () => navigate('/ansible-ui-framework-demo/access/users/create'),
+        onClick: () => navigate('/access/users/create'),
       },
       {
         type: PageActionType.Button,

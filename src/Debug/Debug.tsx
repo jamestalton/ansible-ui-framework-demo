@@ -1,4 +1,4 @@
-import { PageHeader, PageLayout } from '@ansible/ansible-ui-framework'
+import { PageHeader } from '@ansible/ansible-ui-framework'
 import { Button } from '@patternfly/react-core'
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -24,13 +24,13 @@ export function Debug() {
         })
       }
     })
-    navigate('/ansible-ui-framework-demo/access/users')
+    navigate('/access/users')
   }, [createUser, navigate])
 
   return (
-    <PageLayout>
+    <>
       <PageHeader title="Debug" />
       <Button onClick={createUsers}>{t('Create users')}</Button>
-    </PageLayout>
+    </>
   )
 }

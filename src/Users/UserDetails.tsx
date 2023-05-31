@@ -19,19 +19,16 @@ export function UserDetails() {
   }
 
   return (
-    <PageLayout>
+    <>
       <PageHeader
         title={user.username}
-        breadcrumbs={[
-          { label: 'Users', to: '/ansible-ui-framework-demo/access/users' },
-          { label: user.username },
-        ]}
+        breadcrumbs={[{ label: 'Users', to: '/access/users' }, { label: user.username }]}
       />
       <PageDetails>
         <PageDetail label={t('Username') ?? ''}>{user.username}</PageDetail>
         <PageDetail label={t('First name') ?? ''}>{user.firstName}</PageDetail>
         <PageDetail label={t('Last name') ?? ''}>{user.lastName}</PageDetail>
       </PageDetails>
-    </PageLayout>
+    </>
   )
 }

@@ -13,11 +13,11 @@ export function useTeamsActions() {
     () => [
       {
         type: PageActionType.Button,
-        selection: PageActionSelection.Single,
+        selection: PageActionSelection.None,
         icon: PlusIcon,
         label: 'Create team',
         variant: ButtonVariant.primary,
-        onClick: () => navigate('/ansible-ui-framework-demo/access/teams/create'),
+        onClick: () => navigate('/access/teams/create'),
       },
       {
         type: PageActionType.Button,

@@ -18,7 +18,7 @@ export function useTeamActions() {
         icon: EditIcon,
         label: 'Edit team',
         variant: ButtonVariant.primary,
-        onClick: (team) => navigate(`/ansible-ui-framework-demo/access/teams/${team.id}/edit`),
+        onClick: (team) => navigate(`/access/teams/${team.id}/edit`),
       },
       {
         type: PageActionType.Button,
