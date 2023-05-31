@@ -1,7 +1,13 @@
 import { PageFramework, PageLayout } from '@ansible/ansible-ui-framework'
 import { Page } from '@patternfly/react-core'
 import { ReactNode, useMemo } from 'react'
-import { Outlet, RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom'
+import {
+  Navigate,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useNavigate,
+} from 'react-router-dom'
 import { PageNavigationItems } from './PageNavigation'
 
 export function PageApp(props: {
@@ -17,6 +23,10 @@ export function PageApp(props: {
         path: '/',
         element: <PageRouterLayout header={header} sidebar={sidebar} />,
         children: navigationItems,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" />,
       },
     ],
     [header, navigationItems, sidebar]
