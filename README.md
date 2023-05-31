@@ -1,5 +1,9 @@
 # Ansible UI Framework Demo
 
+[Live Demo](jamestalton.github.io/ansible-ui-framework-demo/)
+
+[Framework Documentation](https://github.com/ansible/ansible-ui/wiki/Ansible-UI-Framework)
+
 ## Getting Started
 
 1. Prerequisites
@@ -26,11 +30,3 @@
     ```
     npm start
     ```
-
-## Docker Image
-
-```
-docker run --rm -p 3456:8080 ghcr.io/jamestalton/ansible-ui-framework-demo:main
-```
-
-The demo should be running on <http://localhost:3456>
