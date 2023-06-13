@@ -10,6 +10,7 @@ export function useTeamFilters() {
         type: 'string',
         query: 'name',
         placeholder: 'Filter by name',
+        comparison: 'contains',
       },
     ],
     []

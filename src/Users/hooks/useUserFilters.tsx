@@ -10,6 +10,7 @@ export function useUserFilters() {
         type: 'string',
         query: 'username',
         placeholder: 'Filter by username',
+        comparison: 'contains',
       },
       {
         key: 'firstname',
@@ -17,6 +18,7 @@ export function useUserFilters() {
         type: 'string',
         query: 'firstName',
         placeholder: 'Filter by first name',
+        comparison: 'contains',
       },
       {
         key: 'lastname',
@@ -24,6 +26,7 @@ export function useUserFilters() {
         type: 'string',
         query: 'lastName',
         placeholder: 'Filter by last name',
+        comparison: 'contains',
       },
     ],
     []

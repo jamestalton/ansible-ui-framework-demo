@@ -22,7 +22,7 @@
     "i18n": "npx i18next-parser --config i18next-parser.config.cjs"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "^2.4.154",
+    "@ansible/ansible-ui-framework": "^2.4.196",
     "@patternfly/patternfly": "^4.224.4",
     "@patternfly/react-core": "^4.276.9",
     "@patternfly/react-icons": "^4.93.6",
