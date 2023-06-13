@@ -26,7 +26,9 @@ export function PageNotFound() {
         {/* <EmptyStateBody>{error.message}</EmptyStateBody> */}
         <EmptyStateSecondaryActions>
           <Stack hasGutter>
-            <Button onClick={() => navigate(-1)}>{t('Return to previous page')}</Button>
+            <Button onClick={() => navigate(-1 as unknown as string)}>
+              {t('Return to previous page')}
+            </Button>
             <Button component={(props) => <Link to={'/'} {...props} />}>
               {t('Navigate to Home')}
             </Button>

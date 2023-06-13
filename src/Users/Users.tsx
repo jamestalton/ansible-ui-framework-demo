@@ -1,4 +1,4 @@
-import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { PageHeader, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useIdbItems } from '../common/IDBProvider'

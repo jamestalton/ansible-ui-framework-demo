@@ -1,4 +1,4 @@
-import { PageDetail, PageDetails, PageHeader, PageLayout } from '@ansible/ansible-ui-framework'
+import { PageDetail, PageDetails, PageHeader } from '@ansible/ansible-ui-framework'
 import { Bullseye, Spinner } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
