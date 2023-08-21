@@ -38,6 +38,7 @@ export function Users() {
         title="Users"
       />
       <PageTable<User>
+        id="users-table"
         toolbarFilters={toolbarFilters}
         tableColumns={tableColumns}
         toolbarActions={toolbarActions}

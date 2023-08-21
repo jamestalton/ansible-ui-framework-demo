@@ -38,6 +38,7 @@ export function Teams() {
         title="Teams"
       />
       <PageTable<Team>
+        id="teams-table"
         toolbarFilters={toolbarFilters}
         tableColumns={tableColumns}
         toolbarActions={toolbarActions}
