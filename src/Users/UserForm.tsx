@@ -46,8 +46,7 @@ export function CreateUser() {
 
 export function EditUser() {
   const params = useParams<{ id?: string }>()
-  const id = Number(params.id)
-  const user = useIdbItem('users', id)
+  const user = useIdbItem('users', params.id)
   const navigate = useNavigate()
   const { t } = useTranslation()
   const updateUser = useIdbPutItem('users')

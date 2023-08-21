@@ -101,21 +101,23 @@ export function useIdbHardDeleteItem<Name extends StoreNames<MyDBSchema>>(storeN
 
 export function useIdbItem<Name extends StoreNames<MyDBSchema>>(
   storeName: Name,
-  id: MyDBSchema[Name]['key']
+  id: MyDBSchema[Name]['key'] | undefined
 ) {
   const db = useContext(IndexDbContext)
   const [item, setItem] = useState<MyDBSchema[Name]['value'] | undefined>()
 
-  const abortControllerRef = useRef<AbortController>(new AbortController())
-  useEffect(() => () => abortControllerRef.current.abort(), [])
-
   useEffect(() => {
     if (!db) return
     setItem(undefined)
-    void db.get(storeName, id).then((item) => {
-      if (abortControllerRef.current.signal.aborted) return
-      setItem(item)
-    })
+    if (id === undefined) return
+    void db
+      .get(storeName, id)
+      .then((item) => {
+        setItem(item)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }, [db, id, storeName])
   return item
 }

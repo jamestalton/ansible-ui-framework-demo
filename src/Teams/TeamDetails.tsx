@@ -1,15 +1,14 @@
-import { PageDetail, PageDetails, PageHeader } from '@ansible/ansible-ui-framework'
+import { PageDetailsFromColumns, PageHeader } from '@ansible/ansible-ui-framework'
 import { Bullseye, Spinner } from '@patternfly/react-core'
-import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { useIdbItem } from '../common/IDBProvider'
+import { useTeamColumns } from './hooks/useTeamColumns'
 
 export function TeamDetails() {
   const params = useParams<{ id?: string }>()
   const id = Number(params.id)
   const team = useIdbItem('teams', id)
-  const { t } = useTranslation()
-
+  const columns = useTeamColumns()
   if (!team) {
     return (
       <Bullseye>
@@ -24,10 +23,7 @@ export function TeamDetails() {
         title={team.name}
         breadcrumbs={[{ label: 'Teams', to: '/access/teams' }, { label: team.name }]}
       />
-      <PageDetails>
-        <PageDetail label={t('Name') ?? ''}>{team.name}</PageDetail>
-        <PageDetail label={t('Description') ?? ''}>{team.description}</PageDetail>
-      </PageDetails>
+      <PageDetailsFromColumns columns={columns} item={team} />
     </>
   )
 }
