@@ -1,4 +1,4 @@
-import { IToolbarFilter } from '@ansible/ansible-ui-framework'
+import { IToolbarFilter, ToolbarFilterType } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 
 export function useTeamFilters() {
@@ -7,7 +7,7 @@ export function useTeamFilters() {
       {
         key: 'name',
         label: 'Name',
-        type: 'string',
+        type: ToolbarFilterType.Text,
         query: 'name',
         placeholder: 'Filter by name',
         comparison: 'contains',

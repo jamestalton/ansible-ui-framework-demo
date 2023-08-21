@@ -47,7 +47,7 @@ export function useIdbPutItem<Name extends StoreNames<MyDBSchema>>(storeName: Na
       const now = new Date().toISOString()
       if (!data.created) data.created = now
       data.modified = now
-      return db.put(storeName, data)
+      return db.put(storeName, data as unknown as MyDBSchema[Name]['value'])
     },
     [db, storeName]
   )
@@ -80,7 +80,7 @@ export function useIdbDeleteItem<Name extends StoreNames<MyDBSchema>>(storeName:
   const updateItem = useIdbUpdateItem(storeName)
   const deleteItem = useCallback(
     async (id: MyDBSchema[Name]['key']) => {
-      return updateItem(id, { deleted: true })
+      return updateItem(id, { deleted: true } as unknown as MyDBSchema[Name]['value'])
     },
     [updateItem]
   )

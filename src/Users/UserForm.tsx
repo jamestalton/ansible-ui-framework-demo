@@ -1,6 +1,6 @@
 import {
   PageForm,
-  PageFormSelectOption,
+  PageFormSelect,
   PageFormSubmitHandler,
   PageFormTextInput,
   PageHeader,
@@ -99,7 +99,7 @@ export function UserInputs() {
         isRequired
         minLength={3}
       />
-      <PageFormSelectOption<User>
+      <PageFormSelect<User>
         label={t('Type')}
         name="userType"
         placeholderText={t('Select user type')}
