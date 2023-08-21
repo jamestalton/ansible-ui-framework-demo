@@ -30,20 +30,46 @@ export function App() {
         label: t('Access'),
         path: 'access',
         children: [
-          // TEAMS
-          { path: 'teams/create', element: <CreateTeam /> },
-          { path: 'teams/:id/edit', element: <EditTeam /> },
-          { path: 'teams/:id', element: <TeamDetails /> },
-          { label: t('Teams'), path: 'teams', element: <Teams /> },
-
-          // USERS
-          { path: 'users/create', element: <CreateUser /> },
-          { path: 'users/:id/edit', element: <EditUser /> },
-          { path: 'users/:id', element: <UserDetails /> },
-          { label: t('Users'), path: 'users', element: <Users /> },
+          {
+            // TEAMS
+            label: t('Teams'),
+            path: 'teams',
+            children: [
+              { path: 'create', element: <CreateTeam /> },
+              {
+                path: ':id',
+                children: [
+                  { path: 'edit', element: <EditTeam /> },
+                  { path: '', element: <TeamDetails /> },
+                ],
+              },
+              { path: '', element: <Teams /> },
+            ],
+          },
+          {
+            // USERS
+            label: t('Users'),
+            path: 'users',
+            children: [
+              { path: 'create', element: <CreateUser /> },
+              {
+                path: ':id',
+                children: [
+                  { path: 'edit', element: <EditUser /> },
+                  { path: '', element: <UserDetails /> },
+                ],
+              },
+              { path: '', element: <Users /> },
+            ],
+          },
         ],
       },
-      { label: t('Debug'), path: 'debug', element: <Debug /> },
+      {
+        // DEBUG
+        label: t('Debug'),
+        path: 'debug',
+        element: <Debug />,
+      },
       { path: '/', element: <Navigate to="dashboard" /> },
       { path: '*', element: <PageNotFound /> },
     ],
