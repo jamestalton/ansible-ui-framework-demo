@@ -22,7 +22,7 @@
     "i18n": "npx i18next-parser --config i18next-parser.config.cjs"
   },
   "dependencies": {
-    "@ansible/ansible-ui-framework": "2.4.625",
+    "@ansible/ansible-ui-framework": "2.4.626",
     "i18next-http-backend": "^2.3.1",
     "react-i18next": "^13.3.1",
     "react-router-dom": "^6.17.0"

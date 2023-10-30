@@ -2,7 +2,7 @@ import { PageApp, PageNavigationItem } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Navigate, Outlet } from 'react-router-dom'
-import { AppHeader } from './AppHeader'
+import { AppMasthead } from './AppMasthead'
 import { Dashboard } from './Dashboard/Dashboard'
 import { Debug } from './Debug/Debug'
 import { PageNotFound } from './PageNotFound'
@@ -79,7 +79,7 @@ export function App() {
     <PageApp
       login={<></>}
       root={<Outlet />}
-      masthead={<AppHeader />}
+      masthead={<AppMasthead />}
       navigation={navigationItems}
       // basename="/ansible-ui-framework-demo"
     />
