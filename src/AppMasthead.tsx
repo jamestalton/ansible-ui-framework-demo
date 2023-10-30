@@ -4,7 +4,7 @@ import {
   PageThemeSwitcher,
   useSettingsDialog,
 } from '@ansible/ansible-ui-framework'
-import { ToolbarItem } from '@patternfly/react-core'
+import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core'
 import { useTranslation } from 'react-i18next'
 
 export function AppMasthead() {
@@ -13,10 +13,14 @@ export function AppMasthead() {
   return (
     <PageMasthead title={t('UI Framework Demo')} brand="Ansible">
       <span style={{ flexGrow: 1 }} />
-      <ToolbarItem>
-        <PageThemeSwitcher />
-        <PageSettingsIcon />
-      </ToolbarItem>
+      <ToolbarGroup variant="icon-button-group">
+        <ToolbarItem>
+          <PageThemeSwitcher />
+        </ToolbarItem>
+        <ToolbarItem>
+          <PageSettingsIcon />
+        </ToolbarItem>
+      </ToolbarGroup>
     </PageMasthead>
   )
 }
