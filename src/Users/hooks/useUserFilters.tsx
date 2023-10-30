@@ -1,5 +1,5 @@
-import { IToolbarFilter, ToolbarFilterType } from '@ansible/ansible-ui-framework';
-import { useMemo } from 'react';
+import { IToolbarFilter, ToolbarFilterType } from '@ansible/ansible-ui-framework'
+import { useMemo } from 'react'
 
 export function useUserFilters() {
   return useMemo<IToolbarFilter[]>(

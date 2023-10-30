@@ -1,11 +1,10 @@
+import { PageApp, PageNavigationItem } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { AppHeader } from './AppHeader'
 import { Dashboard } from './Dashboard/Dashboard'
 import { Debug } from './Debug/Debug'
-import { PageApp } from './PageApp'
-import { PageNavigation, PageNavigationItems } from './PageNavigation'
 import { PageNotFound } from './PageNotFound'
 import { TeamDetails } from './Teams/TeamDetails'
 import { CreateTeam, EditTeam } from './Teams/TeamForm'
@@ -17,7 +16,7 @@ import { Users } from './Users/Users'
 export function App() {
   const { t } = useTranslation()
 
-  const navigationItems = useMemo<PageNavigationItems>(
+  const navigationItems = useMemo<PageNavigationItem[]>(
     () => [
       {
         // DASHBOARD
@@ -78,10 +77,11 @@ export function App() {
 
   return (
     <PageApp
-      header={<AppHeader />}
-      sidebar={<PageNavigation navigationItems={navigationItems} />}
-      navigationItems={navigationItems}
-      basename="/ansible-ui-framework-demo"
+      login={<></>}
+      root={<Outlet />}
+      masthead={<AppHeader />}
+      navigation={navigationItems}
+      // basename="/ansible-ui-framework-demo"
     />
   )
 }
