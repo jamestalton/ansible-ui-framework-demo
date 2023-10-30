@@ -6,6 +6,7 @@ import {
   PageHeader,
   pfSuccess,
 } from '@ansible/ansible-ui-framework'
+import { CardBody } from '@patternfly/react-core'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useIdbItems } from '../common/IDBProvider'
@@ -53,8 +54,10 @@ export function Dashboard() {
       <PageDashboard>
         <UsersCard />
         <TeamsCard />
-        <PageDashboardCard height="md" width="xxl" title="Users Created - Last 30 days">
-          <PageDashboardChart groups={userData} />
+        <PageDashboardCard height="sm" width="xxl" title="Users Created - Last 30 days">
+          <CardBody>
+            <PageDashboardChart groups={userData} />
+          </CardBody>
         </PageDashboardCard>
       </PageDashboard>
     </>
