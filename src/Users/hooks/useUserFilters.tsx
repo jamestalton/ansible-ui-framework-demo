@@ -7,7 +7,7 @@ export function useUserFilters() {
       {
         key: 'username',
         label: 'Username',
-        type: ToolbarFilterType.Text,
+        type: ToolbarFilterType.MultiText,
         query: 'username',
         placeholder: 'Filter by username',
         comparison: 'contains',
@@ -15,7 +15,7 @@ export function useUserFilters() {
       {
         key: 'firstname',
         label: 'First name',
-        type: ToolbarFilterType.Text,
+        type: ToolbarFilterType.MultiText,
         query: 'firstName',
         placeholder: 'Filter by first name',
         comparison: 'contains',
@@ -23,7 +23,7 @@ export function useUserFilters() {
       {
         key: 'lastname',
         label: 'Last name',
-        type: ToolbarFilterType.Text,
+        type: ToolbarFilterType.MultiText,
         query: 'lastName',
         placeholder: 'Filter by last name',
         comparison: 'contains',

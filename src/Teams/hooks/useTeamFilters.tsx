@@ -7,7 +7,7 @@ export function useTeamFilters() {
       {
         key: 'name',
         label: 'Name',
-        type: ToolbarFilterType.Text,
+        type: ToolbarFilterType.MultiText,
         query: 'name',
         placeholder: 'Filter by name',
         comparison: 'contains',
