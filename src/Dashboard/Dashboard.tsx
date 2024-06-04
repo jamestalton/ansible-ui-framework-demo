@@ -4,6 +4,7 @@ import {
   PageDashboardChart,
   PageDashboardDonutCard,
   PageHeader,
+  PageLayout,
   pfSuccess,
 } from '@ansible/ansible-ui-framework'
 import { CardBody } from '@patternfly/react-core'
@@ -49,7 +50,7 @@ export function Dashboard() {
   }, [users])
 
   return (
-    <>
+    <PageLayout>
       <PageHeader title="Dashboard" />
       <PageDashboard>
         <UsersCard />
@@ -60,7 +61,7 @@ export function Dashboard() {
           </CardBody>
         </PageDashboardCard>
       </PageDashboard>
-    </>
+    </PageLayout>
   )
 }
 

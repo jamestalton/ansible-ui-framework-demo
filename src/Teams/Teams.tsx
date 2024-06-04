@@ -1,4 +1,4 @@
-import { PageHeader, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useIdbItems } from '../common/IDBProvider'
@@ -28,7 +28,7 @@ export function Teams() {
   const rowActions = useTeamActions()
 
   return (
-    <>
+    <PageLayout>
       <PageHeader
         // breadcrumbs={[
         //   { label: 'Home', to: '/' },
@@ -52,6 +52,6 @@ export function Teams() {
         defaultSubtitle="team"
         expandedRow={(team) => team.description}
       />
-    </>
+    </PageLayout>
   )
 }

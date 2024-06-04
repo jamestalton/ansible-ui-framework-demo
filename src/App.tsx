@@ -1,7 +1,7 @@
-import { PageApp, PageNavigationItem } from '@ansible/ansible-ui-framework'
+import { PageApp, PageFramework, PageNavigationItem } from '@ansible/ansible-ui-framework'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { AppMasthead } from './AppMasthead'
 import { Dashboard } from './Dashboard/Dashboard'
 import { Debug } from './Debug/Debug'
@@ -76,12 +76,12 @@ export function App() {
   )
 
   return (
-    <PageApp
-      login={<></>}
-      root={<Outlet />}
-      masthead={<AppMasthead />}
-      navigation={navigationItems}
-      // basename="/ansible-ui-framework-demo"
-    />
+    <PageFramework defaultRefreshInterval={10}>
+      <PageApp
+        masthead={<AppMasthead />}
+        navigation={navigationItems}
+        defaultRefreshInterval={30}
+      />
+    </PageFramework>
   )
 }

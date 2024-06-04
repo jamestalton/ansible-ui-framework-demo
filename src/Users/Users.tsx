@@ -1,4 +1,4 @@
-import { PageHeader, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
+import { PageHeader, PageLayout, PageTable, useInMemoryView } from '@ansible/ansible-ui-framework'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useIdbItems } from '../common/IDBProvider'
@@ -28,7 +28,7 @@ export function Users() {
   const rowActions = useUserActions()
 
   return (
-    <>
+    <PageLayout>
       <PageHeader
         // breadcrumbs={[
         //   { label: 'Home', to: '/' },
@@ -50,6 +50,6 @@ export function Users() {
         emptyStateButtonText={t('Create user')}
         emptyStateButtonClick={() => navigate('/access/users/create')}
       />
-    </>
+    </PageLayout>
   )
 }
